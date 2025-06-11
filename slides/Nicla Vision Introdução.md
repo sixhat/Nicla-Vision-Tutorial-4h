@@ -27,6 +27,8 @@ pre {background-color: #6e512b; border-radius: 0.4em; box-shadow: 10px 10px 15px
 >  
 > ![](imgs/logo-esad.png)
 
+<!-- _footer: Repositório online em https://github.com/sixhat/Nicla-Vision-Tutorial-4h -->
+
 ---
 
 ## David Sousa-Rodrigues
@@ -244,7 +246,29 @@ Estrutura do código
 
 ---
 
-### Deteção de Blobs - actividade
+### Deteção de Blobs - atividade
+
+
+![bg fit right](<Nicla Vision Introdução-assets/image-3.png>)
 
 * Escolha dois objetos de cores diferentes.
-* Corra o modelo `31_blob_detection.py` e  
+* Corra o modelo `31_blob_detection.py` 
+* Defina o espaço de cores como LAB a partir do drop-down da interface.
+* Mostre à câmara um objeto colorido (por exemplo uma t-shirt) e na imagem capturada pela câmara desenhe um retângulo de forma a capturar a maioria desse objeto.
+* No histograma LAB tome nota dos valores min e max para cada componente e substitua-os na variável `blob1`. 
+* Faça o mesmo com outro objeto, agora substituindo os valores da variável `blob2`.
+
+---
+![bg right fit](<Nicla Vision Introdução-assets/image-4.png>)
+
+* Em alternativa aos dois últimos pontos, utilize a ferramenta `Tools > Machine Vision > Threshold Editor` para definir os mínimos e máximos de uma forma visual.
+* Corra o modelo novamente e agora mostre os objetos à câmara. Verifique que os blobs são detetados.
+
+---
+
+### Explore o código e responda (5 min):
+
+* Qual o efeito de alterar o tamanho mínimo de deteção para áreas maiores e menores?
+* Qual o efeito de não fazer merge dos blobs que se sobreponham?
+* Qual o n. de frames por segundo máximo que obtém? (comentem a linha com o delay)
+
