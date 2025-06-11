@@ -1,1 +1,58 @@
 .DS_Store
+_working
+.ruff_cache
+.vscode
+# Ignore Python cache files
+__pycache__/
+# Ignore Python bytecode files
+*.py[cod]
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# Ignore virtual environment directories
+venv/
+# Ignore log files
+*.log
+# Ignore coverage reports
+.coverage
+# Ignore build directories
+build/
+# Ignore distribution directories
+dist/
+# Ignore egg-info directories
+*.egg-info/
+# Ignore pipenv files
+Pipfile.lock
+# Ignore poetry files
+poetry.lock
+# Ignore environment variable files
+.env
+# Ignore test output files
+*.test_output
+# Ignore IDE specific files
+.idea/
+# Ignore temporary files
+*.tmp
+# Ignore backup files
+*.bak
+# Ignore macOS specific files
+.AppleDouble
+# Ignore Windows specific files
+Thumbs.db
+# Ignore Linux specific files
+*~
+# Ignore coverage configuration files
+.coveragerc
+# Ignore SQLAlchemy migrations
+migrations/
+# Ignore Docker files
+Dockerfile
+# Ignore Docker Compose files
+docker-compose.yml
+# Ignore Kubernetes configuration files
+k8s/
+# Ignore Helm charts
+helm/
+# Ignore Terraform files
+*.tf
+# Ignore Ansible files
+ansible.cfg
