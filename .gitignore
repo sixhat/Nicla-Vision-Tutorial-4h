@@ -56,4 +56,4 @@ helm/
 *.tf
 # Ignore Ansible files
 ansible.cfg
-*.autosave
+.autosave
