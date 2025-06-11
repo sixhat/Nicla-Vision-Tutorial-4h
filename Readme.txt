@@ -6,3 +6,19 @@
     física, machine vision, ou outro tipo de projeto que necessite de um
     microcontrolador potente e relativamente acessível.
 
+Estrutura do curso
+------------------
+
+    Após uma apresentação do curso e da placa o curso está dividido em
+    quatro blocos práticos com os seguintes exercícios:
+
+    1. Início (hello world).
+        √ 11_blink.py 
+        √ 12_blink_all.py
+    2. Sensores internos.
+
+    3. Captura de Imagem e Conectividade
+        31_ap_mode.py (streaming video P&B QVGA em modo AP)
+    4. Computer Vision
+        √ 41_blob_detection.py
+        √ 42_tf_object_detection.py

@@ -252,7 +252,7 @@ Estrutura do código
 ![bg fit right](<Nicla Vision Introdução-assets/image-3.png>)
 
 * Escolha dois objetos de cores diferentes.
-* Corra o modelo `31_blob_detection.py` 
+* Corra o modelo `41_blob_detection.py` 
 * Defina o espaço de cores como LAB a partir do drop-down da interface.
 * Mostre à câmara um objeto colorido (por exemplo uma t-shirt) e na imagem capturada pela câmara desenhe um retângulo de forma a capturar a maioria desse objeto.
 * No histograma LAB tome nota dos valores min e max para cada componente e substitua-os na variável `blob1`. 

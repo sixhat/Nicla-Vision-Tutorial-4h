@@ -25,6 +25,9 @@ blob2 = (65, 75, 10, 17, 2, 10)
 
 blob_color = [(255,0,0),(0,255,0),(0,0,255)]
 
+ledRed = pyb.LED(1) # Initiates the red led
+ledGreen = pyb.LED(2) # Initiates the green led
+
 clock = time.clock() # Instantiates a clock object
 
 while(True):
@@ -36,11 +39,20 @@ while(True):
     blobs = img.find_blobs([blob1, blob2], area_threshold=2500, merge=True)
 
     # Draw blobs
-    for i, blob in enumerate(blobs):
+    for i,blob in enumerate(blobs):
         # Draw a rectangle where the blob was found
         img.draw_rectangle(blob.rect(), color=blob_color[i%3])
         # Draw a cross in the middle of the blob
         img.draw_cross(blob.cx(), blob.cy(), color=blob_color[i%3])
+
+    # Turn on green LED if a blob was found
+    if len(blobs) > 0:
+        ledGreen.on()
+        ledRed.off()
+    else:
+    # Turn the red LED on if no blob was found
+        ledGreen.off()
+        ledRed.on()
 
     pyb.delay(50) # Pauses the execution for 50ms
     print(clock.fps()) # Prints the framerate to the serial console
