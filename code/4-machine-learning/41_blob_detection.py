@@ -2,7 +2,7 @@
 # https://docs.arduino.cc/tutorials/nicla-vision/blob-detection/
 #
 # Colocar os histogramas em modo LAB
-# Seleccionar areas de intresse na janela do OpenMV
+# Selecionar areas de interesse na janela do OpenMV
 # criar blobX com os parametros que enquadrem os histogramas
 
 import pyb # Import module for board related functions
@@ -17,9 +17,9 @@ sensor.set_hmirror(False) # Mirrors the image horizontally
 sensor.skip_frames(time = 2000) # Skip some frames to let the image stabilize
 
 # Define the min/max LAB values we're looking for
-# Configue OpenMV IDE to use LAB Colors.
+# Configure OpenMV IDE to use LAB Colors.
 # Draw squares on the Frame Buffer to define areas of interest
-# Copy aproximate treshold values and define as many blobs as needed.
+# Copy approximate threshold values and define as many blobs as needed.
 blob1 = (30, 40, -10, 4, 0, 10)
 blob2 = (65, 75, 10, 17, 2, 10)
 

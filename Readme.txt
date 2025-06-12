@@ -16,17 +16,17 @@ Estrutura do curso
         √ 11_blink.py 
         √ 12_blink_all.py
     2. Sensores internos.
-        21_vl531x_tof_1.py (rangefinder (tof))
+        √ 21_vl531x_tof_1.py (rangefinder (tof))
         inertial motion unit (imu)
         microfone?
     3. Captura de Imagem e Conectividade
-        31_captura_fps.py
-        31_ap_mode.py (streaming video P&B QVGA em modo AP)
+        31_captura_fps.py (teste da câmara)
+        32_ap_mode.py (streaming video P&B QVGA em modo AP)
     4. Computer Vision e Machine Learning
         teachable machine
             train image classification
             train sound 
             train pose
-        √ 41_blob_detection.py
-        √ 42_tf_object_detection.py
+        √ 41_blob_detection.py (deteção de blobs)
+        42_tf_object_detection.py (deteção de caras)
         Edge Impulse intro

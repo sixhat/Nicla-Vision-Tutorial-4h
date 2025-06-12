@@ -2,16 +2,17 @@
 marp: true
 class: invert
 paginate: true
+headingDivider: 3
 ---
 <style>
 strong {color: chartreuse;}em {color: coral;}
-ul {list-style: '⧐ '; margin: 0;padding: 0;}
+ul {list-style: '∞   '; margin: 0;padding: 0;}
 blockquote {color: cornsilk;}
-h1 {color: #ECD353; font-size:3rem;}
+h1 {color: #E6F17B; font-size:3rem;}
 h2 {color: springgreen;}
 h3 {color: violet;} 
 code{background-color: #324858;}
-pre {background-color: #324858; border-radius: 0.3rem; box-shadow: 5px 5px 10px black}
+pre {background-color: #324858; border-radius: 0.3rem; border-bottom: 5px solid black}
 section.tit {
    background-color: #5C80BC;   
 }
@@ -20,16 +21,18 @@ section.tit h1 {
    text-align: center;
    transform: scale(1.5);
 }
-
+section.sm  {
+   font-size: 24px;
+   color: white;
+}
+img, figure {
+   border-radius: 1rem;
+}
 </style>
 
-# Nicla Vision
 
-![bg right fit 70%](imgs/nv-solo.png)
 
-      eXperiência Hands-on
-      Reconhecimento de Imagem
-      com Edge Computing e IA.
+# eXperiência Hands-on Reconhecimento de Imagem com Edge Computing e IA.
 
 > David Sousa-Rodrigues
 > 27 de Junho 2025
@@ -38,46 +41,64 @@ section.tit h1 {
 
 <!-- _footer: Repositório online em https://github.com/sixhat/Nicla-Vision-Tutorial-4h -->
 
----
-![bg left 60%](<Nicla Vision Introdução-assets/dsr.png>)
+
 
 ## David Sousa-Rodrigues
+![bg left 60%](<Nicla Vision Introdução-assets/dsr.png>)
 
 - Professor de Computação Física, Algoritmia, Design Computacional e
   Inteligência Artificial na Escola Superior de Artes e Design, Caldas
   da Rainha.
 - Membro do centro de complexidade e design da Open University, UK.
 
----
+
 
 # Agenda
 
-> Apresentar as potencialidades do microcontrolador _Arduino Nicla Vison (NV)_ numa perspetiva Hands-on. 
+> Apresentar as potencialidades do microcontrolador [Arduino Nicla Vision (NV)](https://www.arduino.cc/pro/hardware-nicla-family/) numa perspetiva Hands-on. 
 
-1. Apresentação da Placa
-2. 
+1. Apresentação da Placa e sua família
+2. Parte Prática
+   1. Introdução e testes de setup com LED RGB interno
+   2. Os diversos sensores da placa
+   3. A câmara e a conetividade Wifi / Bluetooth
+   4. Computer Vision e Machine Learning
 
----
+
+
+# Importância do que vão aprender aqui hoje
+<!-- footer: Apresentação da Nicla Vision -->
+
 
 ## Nicla (família)
 
-![](imgs/nv-fam.png)
+![Nicla Vision](imgs/nv-fam.png)
 
----
+
+## Nicla Vision
+
+![fit](<Nicla Vision Introdução-assets/image-6.png>)
+
+
+
 
 ## Processador
-Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a 240MHz. Entre eles comunicam via RPC (remote procedure calls).
+Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a
+240MHz. Entre eles comunicam via RPC (remote procedure calls).
 
----
+
 
 ## Inputs / Sensors
 
 - Câmara
-- Time-of-flight long distance ranging sensor (IR - luz 940nm, ±4m distância)
+- Time-of-flight long distance ranging sensor (IR - luz 940nm, ±4m
+  distância)
 - Microfone omnidireccional
-- IMU de 6-eixos (inertial measurment unit) (3 eixos acelerómetro + 3 eixos giroscópio), tem capacidades de ML para p.e. Fazer deteção de gestos e evitar congestionar o processador principal com essa tarefa.
+- IMU de 6-eixos (inertial measurment unit) (3 eixos acelerómetro + 3
+  eixos giroscópio), tem capacidades de ML para p.e. Fazer deteção de
+  gestos e evitar congestionar o processador principal com essa tarefa.
 
----
+
 
 ## Comunicação
 
@@ -89,24 +110,24 @@ Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a 240MHz. E
 - I2C
 - SPI
 
----
+
 
 ### Pinout (frente)
 ![](imgs/nv-1.png)
 
----
+
 
 ### Pinout (traseira)
 ![](imgs/nv-3.png)
 
----
+
 
 ### Alimentação 
 ![bg right 140%](imgs/nv-4.png)
 ![height:500px](imgs/nv-2.png)
 
 
----
+
 
 ## Câmara
 
@@ -114,34 +135,36 @@ Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a 240MHz. E
 - Ângulo do visão: 80º
 - Distância focal: 2.2mm
 
----
+
 
 ## Machine Learning
 
 Um dos atrativos principais da NV é a possibilidade de fazer Computer Vision diretamente no microcontrolador. 
-Há vários modelos “leves” que permitem correr de forma “leve”
+Há vários modelos “leves” disponíveis:
 * YOLO (You Only Look Once)
 * Mobilenet 
 
-* Ambos os modelos são bastante grandes para correrem diretamente num µC.
+* Ambos os modelos são bastante grandes para correrem diretamente num µC (embora haja versões _lite_).
 * FOMO (Fewer Objects, More Objects)
 Versão mais rápida e leve cujo objetivo é correr em µC.
 
----
+
 
 ## Comparar EdgeImpulse com Teachable Machine
 
 - O Teachable Machine Pode permitir uma primeira abordagem ao treino de modelos personalizados antes de estarmos a trabalhar mesmo com Hardware.
 - https://teachablemachine.withgoogle.com/ (O Teachable Machine também permite criar modelos personalizados de CV para arduinos — ver modelos compatíveis XXX).
 
----
+
 
 ### Exemplos de atividades:
+<!-- _class: sm invert -->
+
 - Blink do LED
    - 1 Led
    - LED RGB
 - Explorando exemplos com os sensores:
-   - IMU (accelerómetro e giroscópio)
+   - IMU (acelerómetro e giroscópio)
    - Microfone
    - ToF (sensor de distância)
 - Capturar Imagem e mostrar
@@ -151,7 +174,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
  -  Correr um modelo pré-treinado (FOMO, deteção de faces, classificação de objetos)
 
 
----
+
 
 ## Sugestões de atividades
 - Deteção de movimento e captura de imagem
@@ -159,25 +182,26 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 - LED / Câmara ativada baseada em som?
 - Captura de vídeo baseado no IMU (por exemplo num acidente?)
 
----
 
-<!-- _class: tit -->
+
+
 # Parte prática
+<!-- _class: tit -->
+<!-- footer: "" -->
 
----
 
-<!-- backgroundColor: #192631 -->
 # Pré-requisitos
+
 
 - Computador portátil com wifi, câmara e ligação à internet 
 - Uma placa Arduino Nicla Vision 
 - Cabo USB Micro-B - Type A (pode necessitar adaptador USB-C->Type A)
 
----
 
-### Actividades
 
-   0. setup se necessário.
+### Atividades
+
+    0. setup se necessário.
     1. Início (Pisca Pisca dos LEDs).
         √ 11_blink.py 
         √ 12_blink_all.py
@@ -196,16 +220,30 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
         √ 41_blob_detection.py
         √ 42_tf_object_detection.py
 
----
+
 
 # Setup
+<!-- footer: 0. Setup Nicla Vision + OpenMV IDE -->
 
-A primeira vez que se conecta a NV ao computador o OpenMV IDE irá verificar se é necessário atualizar o firmware da mesma. 
+Antes de conectar pela primeira vez a NV deve colocar a antena.
+
+Verificar se tem o software [OpenMV IDE](https://openmv.io/pages/download) instalado.
+
+Ao conectar a NV ao computador o OpenMV IDE irá verificar se é necessário atualizar o firmware da mesma.
+
+## 
+
+![bg fit](<Nicla Vision Introdução-assets/image-7.png>)
+
+## Atualizar firmware
+
+![height:300](<Nicla Vision Introdução-assets/image-5.png>)
+> Pode-se forçar a tentativa de atualização (mesmo que já tenha o último firmware) colocando a placa em modo bootloader fazendo um duplo clique no botão reset.
+> A placa fará fade-in-out do LED verde indicando estar em modo bootloader.
 
 
-
----
 # Início (pisca-pisca do LED)
+<!-- footer: 1. Pisca Pisca dos LEDs -->
 
 O exercício encontra-se na pasta `./code/1-inicio`
 O ficheiro `11_blink.py` contém instruções para acender o LED azul
@@ -213,7 +251,7 @@ O ficheiro `12_blink_all.py` contém instruções para acender os 3 LEDs em sequ
 
 Para experimentar cada um dos exemplos abra o ficheiro a partir do OpenMV IDE, conecte a Nicla Vision e depois corra o código.
 
----
+
 
 ### Exemplo `11_blink.py`
 
@@ -231,7 +269,7 @@ while True:
     time.sleep_ms(TIME_TO_WAIT)
 ```
 
----
+
 
 ### Exemplo `12_blink_all.py`
 
@@ -261,9 +299,9 @@ while True:
 
 ```
 
----
 
-### Hello World (blink)
+
+### Início (blink)
 
 Nos dois exemplos apresentados observamos:
 
@@ -275,58 +313,101 @@ Nos dois exemplos apresentados observamos:
 —
 https://docs.micropython.org/en/latest/index.html
 
----
+# Sensores Internos
+<!-- footer: 2. Sensores Internos -->
 
-## Deteção de Blobs de cor.
+> Vamos explorar o sensor de distância, o sensor de inércia e o microfone.
+
+Os exemplos encontram-se na pasta `code/2-sensores_internos`
+
+## Sensor de distância
+
+Código em `21_vl53l1x_tof_1.py`
+
+![bg right 70%](<Nicla Vision Introdução-assets/image-8.png>)
+* Utiliza o sensor VL53L1X (time of flight)
+* Emissor laser a 980nm
+* Array de recetores
+* Até 4m de distância
+
+## Sensor de distância
+
+```python
+from machine import I2C
+from vl53l1x import VL53L1X
+import time
+
+tof = VL53L1X(I2C(2))
+
+while True:
+    print(f"Distance: {tof.read()}mm")
+    time.sleep_ms(50)
+```
+
+* **Consegue estimar o ângulo de cobertura (FoV) do sensor?**
+* Segundo o datasheet é ~27º
+
+# Deteção de Blobs.
+<!-- footer: 4. Machine Learning -->
+
+> A deteção de blobs procura definir regiões de uma imagem que possam ser consideradas uniformes (até uma determinada tolerância)
+
+* Há diversos critérios de uniformidade:
+  * Cor
+  * Circularidade
+  * Excentricidade
+  * ...
+
+## Instruções 
+
+> Blob baseado na cor
 
 ![bg right fit 80%](<Nicla Vision Introdução-assets/image.png>)
 
-Abra o exemplo `31_blob_detection.py` no editor OpenMV IDE.
+Abra o exemplo `41_blob_detection.py` no editor OpenMV IDE.
 
-* O Detetor de blobs funciona em espaço de cor La\*b\* (Lightness, a*, e b*, sendo que o a* é b* representa a perceção de cor vermelho–verde e azul–amarelo 
+* O Detetor de blobs funciona em espaço de cor La\*b\* (Lightness, a*, e b*, sendo que o a* é b* representam a perceção de cor vermelho–verde e azul–amarelo 
 
----
 
 ### Deteção de Blobs
 
-Estrutura do código
+Pseudo-código `31_blob_detection.py`
 
 ```txt
-   importa módulos necessários
-   definir variáveis de captura da Nicla Vision
-   definir mínimos e máximos para os diversos blobs  
-   e um conjunto de cores para os representar
+   importa bibliotecas
+   define variáveis de captura da Nicla Vision
+   define mínimos e máximos para os diversos blobs  
+   define um conjunto de cores para os representar
    inicializa o relógio
    loop continuo:
       captura imagem
       encontra blobs
       para cada blob
-         desenha um rectângulo e uma cruz no centro
+         desenha um retângulo e uma cruz no centro de cada blob
       um pequeno delay 
       imprime o n.º de frames por segundo
 ```
 
----
 
 ### Deteção de Blobs - atividade
-
+<!-- _class: sm invert -->
 
 ![bg fit right](<Nicla Vision Introdução-assets/image-3.png>)
 
 * Escolha dois objetos de cores diferentes.
 * Corra o modelo `41_blob_detection.py` 
-* Defina o espaço de cores como LAB a partir do drop-down da interface.
-* Mostre à câmara um objeto colorido (por exemplo uma t-shirt) e na imagem capturada pela câmara desenhe um retângulo de forma a capturar a maioria desse objeto.
-* No histograma LAB tome nota dos valores min e max para cada componente e substitua-os na variável `blob1`. 
+* Defina o espaço de cores como **LAB Color Space** a partir do drop-down.
+* Mostre à câmara os objetos (por exemplo uma t-shirt) e na imagem capturada desenhe um retângulo de forma a circunscrever o objeto.
+* No histograma **LAB** tome nota dos valores _min_ e _max_ para cada componente e substitua-os na variável `blob1`. 
 * Faça o mesmo com outro objeto, agora substituindo os valores da variável `blob2`.
 
----
+### Deteção de Blobs - Threshold Editor
 ![bg right fit](<Nicla Vision Introdução-assets/image-4.png>)
 
 * Em alternativa aos dois últimos pontos, utilize a ferramenta `Tools > Machine Vision > Threshold Editor` para definir os mínimos e máximos de uma forma visual.
 * Corra o modelo novamente e agora mostre os objetos à câmara. Verifique que os blobs são detetados.
 
----
+
 
 ### Explore o código e responda (5 min):
 
