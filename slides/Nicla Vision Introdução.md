@@ -7,16 +7,25 @@ paginate: true
 strong {color: chartreuse;}em {color: coral;}
 ul {list-style: '⧐ '; margin: 0;padding: 0;}
 blockquote {color: cornsilk;}
-h1 {color: #86F5F3;font-size:3rem;}
+h1 {color: #ECD353; font-size:3rem;}
 h2 {color: springgreen;}
 h3 {color: violet;} 
-code{background-color: #6e512b;}
-pre {background-color: #6e512b; border-radius: 0.4em; box-shadow: 10px 10px 15px black}
+code{background-color: #324858;}
+pre {background-color: #324858; border-radius: 0.3rem; box-shadow: 5px 5px 10px black}
+section.tit {
+   background-color: #5C80BC;   
+}
+section.tit h1 {
+   color: #E9EDDE;
+   text-align: center;
+   transform: scale(1.5);
+}
+
 </style>
 
 # Nicla Vision
 
-![bg right fit](imgs/nv-solo.png)
+![bg right fit 70%](imgs/nv-solo.png)
 
       eXperiência Hands-on
       Reconhecimento de Imagem
@@ -30,12 +39,23 @@ pre {background-color: #6e512b; border-radius: 0.4em; box-shadow: 10px 10px 15px
 <!-- _footer: Repositório online em https://github.com/sixhat/Nicla-Vision-Tutorial-4h -->
 
 ---
+![bg left 60%](<Nicla Vision Introdução-assets/dsr.png>)
 
 ## David Sousa-Rodrigues
 
 - Professor de Computação Física, Algoritmia, Design Computacional e
   Inteligência Artificial na Escola Superior de Artes e Design, Caldas
   da Rainha.
+- Membro do centro de complexidade e design da Open University, UK.
+
+---
+
+# Agenda
+
+> Apresentar as potencialidades do microcontrolador _Arduino Nicla Vison (NV)_ numa perspetiva Hands-on. 
+
+1. Apresentação da Placa
+2. 
 
 ---
 
@@ -98,7 +118,7 @@ Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a 240MHz. E
 
 ## Machine Learning
 
-Um dos atrativos principais da Nicla Vision é a possibilidade de fazer Computer Vision diretamente no microcontrolador. 
+Um dos atrativos principais da NV é a possibilidade de fazer Computer Vision diretamente no microcontrolador. 
 Há vários modelos “leves” que permitem correr de forma “leve”
 * YOLO (You Only Look Once)
 * Mobilenet 
@@ -112,7 +132,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 ## Comparar EdgeImpulse com Teachable Machine
 
 - O Teachable Machine Pode permitir uma primeira abordagem ao treino de modelos personalizados antes de estarmos a trabalhar mesmo com Hardware.
-- https://teachablemachine.withgoogle.com/ (O Teachable Machine também permite criar modelos personalizados de CV para arduinos—ver modelos compatíveis).
+- https://teachablemachine.withgoogle.com/ (O Teachable Machine também permite criar modelos personalizados de CV para arduinos — ver modelos compatíveis XXX).
 
 ---
 
@@ -141,9 +161,51 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 
 ---
 
+<!-- _class: tit -->
 # Parte prática
 
-## Hello World (pisca-pisca do LED)
+---
+
+<!-- backgroundColor: #192631 -->
+# Pré-requisitos
+
+- Computador portátil com wifi, câmara e ligação à internet 
+- Uma placa Arduino Nicla Vision 
+- Cabo USB Micro-B - Type A (pode necessitar adaptador USB-C->Type A)
+
+---
+
+### Actividades
+
+   0. setup se necessário.
+    1. Início (Pisca Pisca dos LEDs).
+        √ 11_blink.py 
+        √ 12_blink_all.py
+    2. Sensores internos.
+        21_vl531x_tof_1.py (rangefinder (tof))
+        inertial motion unit (imu)
+        microfone?
+    3. Captura de Imagem e Conectividade
+        31_captura_fps.py (captura simples da câmara)
+        32_ap_mode.py (streaming video P&B QVGA em modo AP)
+    4. Computer Vision e Machine Learning
+        teachable machine
+            train image classification
+            train sound 
+            train pose
+        √ 41_blob_detection.py
+        √ 42_tf_object_detection.py
+
+---
+
+# Setup
+
+A primeira vez que se conecta a NV ao computador o OpenMV IDE irá verificar se é necessário atualizar o firmware da mesma. 
+
+
+
+---
+# Início (pisca-pisca do LED)
 
 O exercício encontra-se na pasta `./code/1-inicio`
 O ficheiro `11_blink.py` contém instruções para acender o LED azul

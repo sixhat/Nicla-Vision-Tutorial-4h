@@ -16,9 +16,11 @@ Estrutura do curso
         √ 11_blink.py 
         √ 12_blink_all.py
     2. Sensores internos.
-        rangefinder (tof)
+        21_vl531x_tof_1.py (rangefinder (tof))
         inertial motion unit (imu)
+        microfone?
     3. Captura de Imagem e Conectividade
+        31_captura_fps.py
         31_ap_mode.py (streaming video P&B QVGA em modo AP)
     4. Computer Vision e Machine Learning
         teachable machine
