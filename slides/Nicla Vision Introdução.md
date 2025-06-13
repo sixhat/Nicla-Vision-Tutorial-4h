@@ -5,12 +5,14 @@ paginate: true
 headingDivider: 3
 ---
 <style>
+* {margin:0; padding:0}
 strong {color: chartreuse;}em {color: coral;}
 ul {list-style: '∞   '; margin: 0;padding: 0;}
 blockquote {color: cornsilk;}
 h1 {color: #E6F17B; font-size:3rem;}
 h2 {color: springgreen;}
 h3 {color: violet;} 
+h1,h2,h3 {column-span: all; border-bottom: 1px solid}
 code{background-color: #324858;}
 pre {background-color: #324858; border-radius: 0.3rem; border-bottom: 5px solid black}
 section.tit {
@@ -21,30 +23,65 @@ section.tit h1 {
    text-align: center;
    transform: scale(1.5);
 }
+section::after {
+   font-size: 80%;
+   background: darkred;
+   border-radius: 1em;
+   color: yellow;
+   padding: 0 0.5em 0 0.5em;
+}
 section.sm  {
    font-size: 24px;
    color: white;
 }
-img, figure {
-   border-radius: 1rem;
+section.two {
+   column-count: 2;
+}
+section.two * {
+   font-size: 1em;
+}
+p > img {
+   display: flex;
+}
+img {
+   border-radius: 0.67em;
+   margin: 0 auto;
+   display: flex;
+}
+img.square {
+   border-radius: 0;
+}
+img.center {
+   margin: 0 auto;
+}
+img.left {
+   float: left;
+   margin-right: 1em;
+}
+img.right {
+   float:right;
+   margin-left: 1em;
 }
 </style>
 
 
-
+<!-- _paginate: false -->
 # eXperiência Hands-on Reconhecimento de Imagem com Edge Computing e IA.
+
+<img src=imgs/logo-esad.png class='square right'>
 
 > David Sousa-Rodrigues
 > 27 de Junho 2025
 >  
-> ![](imgs/logo-esad.png)
+
 
 <!-- _footer: Repositório online em https://github.com/sixhat/Nicla-Vision-Tutorial-4h -->
 
 
 
 ## David Sousa-Rodrigues
-![bg left 60%](<Nicla Vision Introdução-assets/dsr.png>)
+<!-- _class: two invert -->
+![height:450](<Nicla Vision Introdução-assets/dsr.png>)
 
 - Professor de Computação Física, Algoritmia, Design Computacional e
   Inteligência Artificial na Escola Superior de Artes e Design, Caldas
@@ -83,6 +120,9 @@ img, figure {
 
 
 ## Processador
+
+<img src='Nicla Vision Introdução-assets/image-9.png' width=100 class="left">
+
 Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a
 240MHz. Entre eles comunicam via RPC (remote procedure calls).
 
@@ -123,8 +163,11 @@ Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a
 
 
 ### Alimentação 
-![bg right 140%](imgs/nv-4.png)
-![height:500px](imgs/nv-2.png)
+<!-- _class: invert two -->
+
+![](imgs/nv-4.png)
+
+![height:450px](imgs/nv-2.png)
 
 
 
