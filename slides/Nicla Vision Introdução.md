@@ -15,8 +15,12 @@ h3 {color: violet;}
 h1,h2,h3 {column-span: all; border-bottom: 1px solid}
 code{background-color: #324858;}
 pre {background-color: #324858; border-radius: 0.3rem; border-bottom: 5px solid black}
+section {
+   align-content: baseline;
+}
 section.tit {
    background-color: #5C80BC;   
+   align-content: center;
 }
 section.tit h1 {
    color: #E9EDDE;
@@ -27,7 +31,7 @@ section::after {
    font-size: 80%;
    background: darkred;
    border-radius: 1em;
-   color: yellow;
+   color: #E6F17B;
    padding: 0 0.5em 0 0.5em;
 }
 section.sm  {
@@ -274,7 +278,7 @@ Verificar se tem o software [OpenMV IDE](https://openmv.io/pages/download) insta
 
 Ao conectar a NV ao computador o OpenMV IDE irá verificar se é necessário atualizar o firmware da mesma.
 
-## 
+---
 
 ![bg fit](<Nicla Vision Introdução-assets/image-7.png>)
 
@@ -320,9 +324,9 @@ while True:
 import pyb
 
 TIME_TO_WAIT = 500
-redLED = pyb.LED(1)  # built-in red LED
+redLED   = pyb.LED(1)  # built-in red LED
 greenLED = pyb.LED(2)  # built-in green LED
-blueLED = pyb.LED(3)  # built-in blue LED
+blueLED  = pyb.LED(3)  # built-in blue LED
 
 while True:
     redLED.on()
@@ -339,7 +343,6 @@ while True:
     pyb.delay(TIME_TO_WAIT)
     blueLED.off()
     pyb.delay(TIME_TO_WAIT)
-
 ```
 
 
@@ -359,9 +362,13 @@ https://docs.micropython.org/en/latest/index.html
 # Sensores Internos
 <!-- footer: 2. Sensores Internos -->
 
-> Vamos explorar o sensor de distância, o sensor de inércia e o microfone.
+Vamos explorar:
 
-Os exemplos encontram-se na pasta `code/2-sensores_internos`
+- sensor de distância 
+- sensor de inércia
+- microfone
+
+> Os exemplos encontram-se na pasta `code/2-sensores_internos`
 
 ## Sensor de distância
 
@@ -403,13 +410,15 @@ while True:
 
 ## Instruções 
 
-> Blob baseado na cor
+<!-- _class: invert two -->
 
-![bg right fit 80%](<Nicla Vision Introdução-assets/image.png>)
+> Blobs baseados na similaridade de cor
 
-Abra o exemplo `41_blob_detection.py` no editor OpenMV IDE.
+* Abra o exemplo `41_blob_detection.py` no editor OpenMV IDE.
 
-* O Detetor de blobs funciona em espaço de cor La\*b\* (Lightness, a*, e b*, sendo que o a* é b* representam a perceção de cor vermelho–verde e azul–amarelo 
+* O Detetor de blobs funciona em espaço de cor La\*b\*—_Luminosidade, a*, e b*, sendo que o a* é b* representam a perceção de cor vermelho–verde e azul–amarelo_
+
+![](<Nicla Vision Introdução-assets/image.png>)
 
 
 ### Deteção de Blobs
@@ -433,24 +442,24 @@ Pseudo-código `31_blob_detection.py`
 
 
 ### Deteção de Blobs - atividade
-<!-- _class: sm invert -->
+<!-- _class: sm invert two -->
 
-![bg fit right](<Nicla Vision Introdução-assets/image-3.png>)
-
-* Escolha dois objetos de cores diferentes.
 * Corra o modelo `41_blob_detection.py` 
 * Defina o espaço de cores como **LAB Color Space** a partir do drop-down.
-* Mostre à câmara os objetos (por exemplo uma t-shirt) e na imagem capturada desenhe um retângulo de forma a circunscrever o objeto.
+* Mostre à câmara diversos objetos e na imagem capturada desenhe um retângulo de forma a circunscrever o objeto.
 * No histograma **LAB** tome nota dos valores _min_ e _max_ para cada componente e substitua-os na variável `blob1`. 
 * Faça o mesmo com outro objeto, agora substituindo os valores da variável `blob2`.
 
+![](<Nicla Vision Introdução-assets/image-3.png>)
+
 ### Deteção de Blobs - Threshold Editor
-![bg right fit](<Nicla Vision Introdução-assets/image-4.png>)
+
+<!-- _class: two invert -->
 
 * Em alternativa aos dois últimos pontos, utilize a ferramenta `Tools > Machine Vision > Threshold Editor` para definir os mínimos e máximos de uma forma visual.
 * Corra o modelo novamente e agora mostre os objetos à câmara. Verifique que os blobs são detetados.
 
-
+![](<Nicla Vision Introdução-assets/image-4.png>)
 
 ### Explore o código e responda (5 min):
 
