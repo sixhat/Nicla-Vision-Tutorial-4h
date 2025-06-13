@@ -28,5 +28,5 @@ Estrutura do curso
             train sound 
             train pose
         √ 41_blob_detection.py (deteção de blobs)
-        42_tf_object_detection.py (deteção de caras)
+        √ 42_tf_object_detection.py (deteção de caras)
         Edge Impulse intro

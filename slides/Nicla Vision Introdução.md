@@ -14,7 +14,7 @@ h2 {color: springgreen;}
 h3 {color: violet;} 
 h1,h2,h3 {column-span: all; border-bottom: 1px solid}
 code{background-color: #324858;}
-pre {background-color: #324858; border-radius: 0.3rem; border-bottom: 5px solid black}
+pre {background-color: #324858; border-radius: 0.3rem;}
 section {
    align-content: baseline;
 }
@@ -253,7 +253,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
         √ 11_blink.py 
         √ 12_blink_all.py
     2. Sensores internos.
-        21_vl531x_tof_1.py (rangefinder (tof))
+        √ 21_vl531x_tof_1.py (rangefinder (tof))
         inertial motion unit (imu)
         microfone?
     3. Captura de Imagem e Conectividade
@@ -272,11 +272,11 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 # Setup
 <!-- footer: 0. Setup Nicla Vision + OpenMV IDE -->
 
-Antes de conectar pela primeira vez a NV deve colocar a antena.
+- Antes de conectar pela primeira vez a NV deve colocar a antena.
 
-Verificar se tem o software [OpenMV IDE](https://openmv.io/pages/download) instalado.
+- Verifique se tem o software [OpenMV IDE](https://openmv.io/pages/download) instalado.
 
-Ao conectar a NV ao computador o OpenMV IDE irá verificar se é necessário atualizar o firmware da mesma.
+- Ao conectar a NV ao computador o OpenMV IDE irá verificar se é necessário atualizar o firmware da mesma.
 
 ---
 
