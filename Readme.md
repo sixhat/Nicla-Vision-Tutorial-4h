@@ -9,8 +9,7 @@
 Estrutura do curso
 ------------------
 
-    Após uma apresentação do curso e da placa o curso está dividido em
-    quatro blocos práticos com os seguintes exercícios:
+Após uma [apresentação do curso](slides/Nicla Vision Introdução.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
 
     1. Início (hello world).
         √ 11_blink.py 

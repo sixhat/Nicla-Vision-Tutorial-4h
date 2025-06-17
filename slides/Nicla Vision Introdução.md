@@ -22,6 +22,7 @@ section {
 footer {
    text-align: center;
    width: 100%;
+   font-size: 14px;
 }
 footer a {
    color: #aaa;
@@ -51,6 +52,9 @@ section.two {
 }
 section.two * {
    font-size: 1em;
+}
+section.two footer {
+   font-size: 14px;
 }
 p > img {
    display: flex;
@@ -104,6 +108,8 @@ img.right {
 
 # Agenda
 
+<!-- footer: <a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a> -->
+
 > Apresentar as potencialidades do microcontrolador [Arduino Nicla Vision (NV)](https://www.arduino.cc/pro/hardware-nicla-family/) numa perspetiva Hands-on. 
 
 1. Apresentação da Placa e sua família
@@ -114,12 +120,6 @@ img.right {
    4. Computer Vision e Machine Learning
 
 
-
-# Importância do que vão aprender aqui hoje
-<!-- footer: Apresentação da Nicla Vision -->
-
-XXX
-
 ## Nicla (família)
 
 ![Nicla Vision](imgs/nv-fam.png)
@@ -128,7 +128,6 @@ XXX
 ## Nicla Vision
 
 ![fit](<Nicla Vision Introdução-assets/image-6.png>)
-
 
 
 
@@ -205,14 +204,6 @@ Há vários modelos “leves” disponíveis:
 Versão mais rápida e leve cujo objetivo é correr em µC.
 
 
-
-## Comparar EdgeImpulse com Teachable Machine
-
-- O Teachable Machine Pode permitir uma primeira abordagem ao treino de modelos personalizados antes de estarmos a trabalhar mesmo com Hardware.
-- https://teachablemachine.withgoogle.com/ (O Teachable Machine também permite criar modelos personalizados de CV para arduinos — ver modelos compatíveis XXX).
-
-
-
 ### Exemplos de atividades:
 <!-- _class: sm invert -->
 
@@ -258,7 +249,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 
 ### Atividades
 
-    0. setup se necessário.
+    0. setup, se necessário.
     1. Início (Pisca Pisca dos LEDs).
         √ 11_blink.py 
         √ 12_blink_all.py
@@ -275,7 +266,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
             train sound 
             train pose
         √ 41_blob_detection.py
-        √ 42_tf_object_detection.py
+        42_tf_object_detection.py (utiliza um modelo pré treinado para detetar caras)
 
 
 
@@ -489,7 +480,7 @@ while True:
 > Experimentar outros `framesize` para perceber as diferenças de performance
 > eg: QQVGA, VGA, SVGA e XVGA, experimentar desligar a visualização.
 
-## Acesso remoto à câmara
+## Acesso remoto à câmara (Wifi)
 
 <img class="right" width=320 src="Nicla Vision Introdução-assets/out2.gif">
 
@@ -549,6 +540,14 @@ Aceder em: https://teachablemachine.withgoogle.com/
 2. Por exemplo uma pose pode indicar com um braço no ar pode indicar "Pedir ajuda" e outra com os dois braços pode indicar "Parar tudo"
 
 
+## TM - Modelos para microcontroladores
+
+- O Teachable Machine permite exportar estes modelos. No entanto, os modelos exportados não são compatíveis com a **Nicla Vision**, sendo apenas suportados pelo Arduino Nano 33 BLE Sense (EOL) 
+
+- Os modelos **tensorflow lite** tem que ser **quantitizados** (pesos da rede neuronal tem que ser int8 em vez de float32), mas tal exige ter um conjunto de amostras representativas do modelo para obter os intervalos de dados.
+
+- Em alternativa pode-se treinar modelos no Edge Impulse (https://edgeimpulse.com/) que são compatíveis com a Nicla Vision (embora os projetos não sejam tão intuitivos de executar como no Teachable Machine)       
+
 ## Deteção de Blobs.
 
 > A deteção de blobs procura definir regiões de uma imagem que possam ser consideradas uniformes (até uma determinada tolerância)
@@ -591,7 +590,6 @@ Pseudo-código `31_blob_detection.py`
       imprime o n.º de frames por segundo
 ```
 
-
 ### Deteção de Blobs - atividade
 <!-- _class: sm invert two -->
 
@@ -605,7 +603,7 @@ Pseudo-código `31_blob_detection.py`
 
 ### Deteção de Blobs - Threshold Editor
 
-<!-- _class: two invert -->
+<!-- _class: two invert sm -->
 
 * Em alternativa aos dois últimos pontos, utilize a ferramenta `Tools > Machine Vision > Threshold Editor` para definir os mínimos e máximos de uma forma visual.
 * Corra o modelo novamente e agora mostre os objetos à câmara. Verifique que os blobs são detetados.
@@ -618,5 +616,21 @@ Pseudo-código `31_blob_detection.py`
 * Qual o efeito de não fazer merge dos blobs que se sobreponham?
 * Qual o n. de frames por segundo máximo que obtém? (comentem a linha com o delay)
 
+## Deteção de Caras, modelo pré treinado.
 
+<img src="Nicla Vision Introdução-assets/faces2.gif" class='right'>
+
+> Neste exemplo vamos utilizar um modelo pré treinado para a deteção de caras.
+> O modelo pode ser encontrado na pasta `4-machine-learning` no exemplo `42_tf_object_detection.py`
+
+1. Copie os ficheiros `fomo_face_detection.tflite` e `fomo_face_detection.txt` para a raiz do volume da **NV**
+2. Abra o ficheiro `42_tf_object_detection.py` no OpenMV e corra o modelo.
+
+
+# Conclusões
+<!-- backgroundColor: #333300 -->
+
+A computação Edge está cada vez mais acessível. 
+
+A **NV** é relativamente acessível e relativamente fácil de utilizar.
 
