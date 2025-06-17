@@ -18,10 +18,10 @@ Estrutura do curso
     2. Sensores internos.
         √ 21_vl531x_tof_1.py (rangefinder (tof))
         √ inertial motion unit (imu)
-        microfone?
+        √ microfone?
     3. Captura de Imagem e Conectividade
-        31_captura_fps.py (teste da câmara)
-        32_ap_mode.py (streaming video P&B QVGA em modo AP)
+        √ 31_captura_fps.py (teste da câmara)
+        √ 32_ap_mode.py (streaming video P&B QVGA em modo AP)
     4. Computer Vision e Machine Learning
         teachable machine
             train image classification

@@ -19,6 +19,13 @@ pre {background-color: #324858; border-radius: 0.3rem;}
 section {
    align-content: baseline;
 }
+footer {
+   text-align: center;
+   width: 100%;
+}
+footer a {
+   color: #aaa;
+}
 section.tit {
    background-color: #5C80BC;   
    align-content: center;
@@ -260,10 +267,10 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
         √ inertial motion unit (imu)
         √ microfone?
     3. Captura de Imagem e Conectividade
-        31_captura_fps.py (captura simples da câmara)
-        32_ap_mode.py (streaming video P&B QVGA em modo AP)
+        √ 31_captura_fps.py (captura simples da câmara)
+        √ 32_ap_mode.py (streaming video P&B QVGA em modo AP)
     4. Computer Vision e Machine Learning
-        teachable machine
+        √ teachable machine
             train image classification
             train sound 
             train pose
@@ -273,7 +280,8 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 
 
 # Setup
-<!-- footer: 0. Setup Nicla Vision + OpenMV IDE -->
+<!-- footer: <a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a> -->
+
 
 - Antes de conectar pela primeira vez a **NV** deve colocar a antena.
 
@@ -295,7 +303,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 # 1. LED interno
 <!-- _class: tit -->
 <!-- backgroundColor: #300; -->
-<!-- footer: 1. LED interno -->
+<!-- footer: <a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a> -->
 
 ---
 
@@ -374,7 +382,6 @@ https://docs.micropython.org/en/latest/index.html
 
 # 2. Sensores Internos
 <!-- backgroundColor: #030; -->
-<!-- footer: 2. Sensores Internos -->
 <!-- _class: tit  -->
 
 ## Vamos explorar:
@@ -452,7 +459,7 @@ o código encontra-se no ficheiro `23_audio_fft.py`. Importante notar os seguint
 # 3. Câmara e Wifi
 <!-- _class: tit -->
 <!-- backgroundColor: #303; -->
-<!-- footer: 3. Captura de Imagens e Conectividade -->
+
 
 ## Exemplos de utilização da câmara e wifi
 
@@ -498,11 +505,51 @@ while True:
 # 4. Machine Learning
 <!-- _class: tit -->
 <!-- backgroundColor: #004; -->
-<!-- footer: 4. Machine Learning -->
+
+
+## Teachable Machine (TM)
+
+<img src="Nicla Vision Introdução-assets/prediction.gif" class="right">
+
+Teachable Machine é uma ferramenta online gratuita do Google que permite criar modelos de Machine Learning de forma simples e sem precisar programar.
+
+Com ele, podemos treinar modelos para:
+
+      - Reconhecer imagens (ex: objetos, pessoas)
+      - Reconhecer sons (ex: palmas, fala)
+      - Reconhecer poses corporais (ex: gestos, movimentos)
+
+Aceder em: https://teachablemachine.withgoogle.com/
+
+## TM - Reconhecimento de imagens
+
+1. Escolher Get Started
+2. Criar um Projeto Novo do tipo "Image Project" e "Standard image model"
+3. Definir o n. de classes para o n. de categorias pretendidas (não esquecer de incluir uma categoria vazia)
+4. Utilizar a câmara do portátil para capturar exemplos dos objetos 
+5. Treinar o modelo clicando em "Train Model".
+6. Testar o modelo
+
+> As imagens capturadas não são enviadas para o Google. Ficam apenas no browser durante a execução do treino. 
+
+## TM - Reconhecimento de voz
+
+1. Criar um projeto novo do tipo Audio Project.
+2. Neste caso é necessário extrair amostras do ruído de fundo. Depois de gravar cada uma das amostras é necessário clicar em "Extract Sample"
+3. Também para os comandos pretendidos é necessário gravar pelo menos 8 amostras e fazer "Extract Sample"
+4. Treinar o modelo 
+5. Testar o modelo
+
+## TM - Deteção de Pose
+
+
+<img src="Nicla Vision Introdução-assets/pose.gif" class="right" width=450>
+
+1. Crie um projeto de deteção de Poses para classificar diferentes poses. 
+2. Por exemplo uma pose pode indicar com um braço no ar pode indicar "Pedir ajuda" e outra com os dois braços pode indicar "Parar tudo"
+
 
 ## Deteção de Blobs.
-
-
 
 > A deteção de blobs procura definir regiões de uma imagem que possam ser consideradas uniformes (até uma determinada tolerância)
 
@@ -570,4 +617,6 @@ Pseudo-código `31_blob_detection.py`
 * Qual o efeito de alterar o tamanho mínimo de deteção para áreas maiores e menores?
 * Qual o efeito de não fazer merge dos blobs que se sobreponham?
 * Qual o n. de frames por segundo máximo que obtém? (comentem a linha com o delay)
+
+
 
