@@ -634,3 +634,5 @@ A computação Edge está cada vez mais acessível.
 
 A **NV** é relativamente acessível e relativamente fácil de utilizar.
 
+Software + Hardware nem sempre ligam bem uma vez que o Software da Edge Impulse é também utilizado para outras placas com mais capacidades levando a erros e alguns crashes.
+

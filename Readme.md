@@ -9,7 +9,7 @@
 Estrutura do curso
 ------------------
 
-Após uma [apresentação do curso](slides/Nicla Vision Introdução.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
+Após uma [apresentação do curso](./slides/Nicla Vision Introdução.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
 
     1. Início (hello world).
         √ 11_blink.py 
@@ -28,4 +28,4 @@ Após uma [apresentação do curso](slides/Nicla Vision Introdução.html) e da 
             train pose
         √ 41_blob_detection.py (deteção de blobs)
         √ 42_tf_object_detection.py (deteção de caras)
-        Edge Impulse intro
+    
