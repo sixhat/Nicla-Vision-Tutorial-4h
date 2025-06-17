@@ -13,10 +13,10 @@ import time
 import network
 import socket
 
-SSID = "OPENMV_AP"  # Network SSID
-KEY = "1234567890"  # Network key (must be 10 chars)
-HOST = ""  # Use first available interface
-PORT = 8080  # Arbitrary non-privileged port
+SSID = "MUDAR para o nome da rede pretendida" 
+KEY = "1234567890"  
+HOST = ""  
+PORT = 8080  
 
 # Reset sensor
 sensor.reset()

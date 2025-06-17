@@ -3,6 +3,7 @@ marp: true
 class: invert
 paginate: true
 headingDivider: 3
+backgroundColor: #000;
 ---
 <style>
 * {margin:0; padding:0}
@@ -110,6 +111,7 @@ img.right {
 # Importância do que vão aprender aqui hoje
 <!-- footer: Apresentação da Nicla Vision -->
 
+XXX
 
 ## Nicla (família)
 
@@ -127,8 +129,8 @@ img.right {
 
 <img src='Nicla Vision Introdução-assets/image-9.png' width=100 class="left">
 
-Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a
-240MHz. Entre eles comunicam via RPC (remote procedure calls).
+Dual-core STM32H747, que inclui um **ARM Cortex M7 a 480MHz** e um **ARM Cortex M4 a 240MHz**. 
+Entre eles comunicam via RPC (remote procedure calls).
 
 
 
@@ -186,7 +188,7 @@ Dual-core STM32H747, que inclui um Cortex M7 a 480MHz e um Cortex M4 a
 
 ## Machine Learning
 
-Um dos atrativos principais da NV é a possibilidade de fazer Computer Vision diretamente no microcontrolador. 
+Um dos atrativos principais da **NV** é a possibilidade de fazer Computer Vision diretamente no microcontrolador. 
 Há vários modelos “leves” disponíveis:
 * YOLO (You Only Look Once)
 * Mobilenet 
@@ -235,6 +237,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 # Parte prática
 <!-- _class: tit -->
 <!-- footer: "" -->
+<!-- backgroundColor: #333 -->
 
 
 # Pré-requisitos
@@ -254,8 +257,8 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
         √ 12_blink_all.py
     2. Sensores internos.
         √ 21_vl531x_tof_1.py (rangefinder (tof))
-        inertial motion unit (imu)
-        microfone?
+        √ inertial motion unit (imu)
+        √ microfone?
     3. Captura de Imagem e Conectividade
         31_captura_fps.py (captura simples da câmara)
         32_ap_mode.py (streaming video P&B QVGA em modo AP)
@@ -272,7 +275,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 # Setup
 <!-- footer: 0. Setup Nicla Vision + OpenMV IDE -->
 
-- Antes de conectar pela primeira vez a NV deve colocar a antena.
+- Antes de conectar pela primeira vez a **NV** deve colocar a antena.
 
 - Verifique se tem o software [OpenMV IDE](https://openmv.io/pages/download) instalado.
 
@@ -289,15 +292,23 @@ Versão mais rápida e leve cujo objetivo é correr em µC.
 > A placa fará fade-in-out do LED verde indicando estar em modo bootloader.
 
 
-# Início (pisca-pisca do LED)
-<!-- footer: 1. Pisca Pisca dos LEDs -->
+# 1. LED interno
+<!-- _class: tit -->
+<!-- backgroundColor: #300; -->
+<!-- footer: 1. LED interno -->
 
-O exercício encontra-se na pasta `./code/1-inicio`
-O ficheiro `11_blink.py` contém instruções para acender o LED azul
-O ficheiro `12_blink_all.py` contém instruções para acender os 3 LEDs em sequência (Red, Green, Blue).
+---
 
-Para experimentar cada um dos exemplos abra o ficheiro a partir do OpenMV IDE, conecte a Nicla Vision e depois corra o código.
+- Ao comprar uma placa o primeiro objetivo é ver se está a funcionar. 
 
+- Vamos colocar o LED RGB interno a funcionar de duas formas diferentes. 
+ 
+> O código dos exercícios encontra-se na pasta `./code/1-inicio`
+
+- O ficheiro `11_blink.py` contém instruções para acender o LED azul
+- O ficheiro `12_blink_all.py` contém instruções para acender os 3 LEDs em sequência (Red, Green, Blue).
+
+> Para experimentar cada um dos exemplos abra o ficheiro a partir do OpenMV IDE, conecte a Nicla Vision e depois corra o código.
 
 
 ### Exemplo `11_blink.py`
@@ -319,6 +330,8 @@ while True:
 
 
 ### Exemplo `12_blink_all.py`
+
+<!-- _class: invert sm -->
 
 ```python
 import pyb
@@ -351,7 +364,7 @@ while True:
 
 Nos dois exemplos apresentados observamos:
 
-* Utilizamos python (Micropython em vez de C++, tradicionalmente utilizado com Arduinos)
+* Utilizamos **python** (Micropython em vez de C++, tradicionalmente utilizado com Arduinos)
 * É possível utilizar C++ mas obriga a mudar o firmware da placa.
 * Vemos duas formas diferentes de aceder ao hardware (LED), utilizando a biblioteca `pyb` e a biblioteca `machine`
 * A `pyb` é específica para a placa **pyboard**, vendida pelo **micropython** mas compatível com a Nicla Vision.
@@ -359,10 +372,12 @@ Nos dois exemplos apresentados observamos:
 —
 https://docs.micropython.org/en/latest/index.html
 
-# Sensores Internos
+# 2. Sensores Internos
+<!-- backgroundColor: #030; -->
 <!-- footer: 2. Sensores Internos -->
+<!-- _class: tit  -->
 
-Vamos explorar:
+## Vamos explorar:
 
 - sensor de distância 
 - sensor de inércia
@@ -374,9 +389,10 @@ Vamos explorar:
 
 Código em `21_vl53l1x_tof_1.py`
 
-![bg right 70%](<Nicla Vision Introdução-assets/image-8.png>)
+<img class='right' src="Nicla Vision Introdução-assets/image-8.png">
+
 * Utiliza o sensor VL53L1X (time of flight)
-* Emissor laser a 980nm
+* Emissor laser, 980nm
 * Array de recetores
 * Até 4m de distância
 
@@ -397,8 +413,96 @@ while True:
 * **Consegue estimar o ângulo de cobertura (FoV) do sensor?**
 * Segundo o datasheet é ~27º
 
-# Deteção de Blobs.
+
+## Sensor de Inércia
+
+- [LSM6DSOX](https://www.st.com/en/mems-and-sensors/lsm6dsox.html#documentation) tem um acelerómetro e um giroscópio de 3 eixos. 
+- Interface SPI (Serial Parallel Interface)
+- Carregue e corra o exemplo `22_lsm6dsox_basic.py`
+- Experimente mover a **NV** e observe os valor apresentados no terminal do OpenMV.
+
+## Sensor de Inércia (código)
+
+```python
+import time
+from lsm6dsox import LSM6DSOX
+from machine import Pin
+from machine import SPI
+
+lsm = LSM6DSOX(SPI(5), cs=Pin("PF6", Pin.OUT_PP, Pin.PULL_UP))
+
+while True:
+    print("Accelerometer: x:{:>8.3f} y:{:>8.3f} z:{:>8.3f}".format(*lsm.accel()))
+    print("Gyroscope:     x:{:>8.3f} y:{:>8.3f} z:{:>8.3f}".format(*lsm.gyro()))
+    print("")
+    time.sleep_ms(100)
+```
+
+## Sensor Microfone
+
+<img class="right" src="Nicla Vision Introdução-assets/fft_out.gif">
+
+A **NV** está equipada com um microfone omni-direcional 
+
+o código encontra-se no ficheiro `23_audio_fft.py`. Importante notar os seguintes aspetos:
+
+* `audio.start_streaming` e `audio.stop_streaming` para começar e parar a captura
+* utiliza a biblioteca de cálculo numérico `numpy` em vez de vetores nativos python
+
+# 3. Câmara e Wifi
+<!-- _class: tit -->
+<!-- backgroundColor: #303; -->
+<!-- footer: 3. Captura de Imagens e Conectividade -->
+
+## Exemplos de utilização da câmara e wifi
+
+> Os exemplos encontram-se na pasta `3-captura-imagem`
+
+- `31_captura_fps.py` - Ilustra a captura de imagens a partir da câmara da **NV**.
+- `32_ap_mode.py` - Ilustra a utilização da **NV** como um ponto de acesso (AP) wifi. 
+
+## Captura de imagem
+
+```python
+import sensor
+import time
+
+sensor.reset()  
+sensor.set_pixformat(sensor.RGB565) 
+sensor.set_framesize(sensor.QVGA)  #Outros formatos são suportados
+sensor.skip_frames(time=2000)  
+clock = time.clock() 
+
+while True:
+    clock.tick()  
+    img = sensor.snapshot()  
+    print(clock.fps()) 
+```
+
+> Experimentar outros `framesize` para perceber as diferenças de performance
+> eg: QQVGA, VGA, SVGA e XVGA, experimentar desligar a visualização.
+
+## Acesso remoto à câmara
+
+<img class="right" width=320 src="Nicla Vision Introdução-assets/out2.gif">
+
+> Vamos tornar a **NV** num AP ao qual podemos aceder com o telemóvel.
+
+1. abram o ficheiro `32_ap_mode.py`
+2. editem a _linha 16_ para definir um SSID (temos 5 **NV** pelo que os SSIDs devem ser diferentes)
+3. Corram o código na Nicla Vision
+4. Acedam a este ponto de acesso com o telemóvel juntando-se à rede recentemente criada e abram o browser no endereço **http://IP_DA_NV:8080**
+
+> Nota, o código permite o estabelecimento da ligação de um cliente de cada vez apenas.
+
+# 4. Machine Learning
+<!-- _class: tit -->
+<!-- backgroundColor: #004; -->
 <!-- footer: 4. Machine Learning -->
+
+## Deteção de Blobs.
+
+
 
 > A deteção de blobs procura definir regiões de uma imagem que possam ser consideradas uniformes (até uma determinada tolerância)
 

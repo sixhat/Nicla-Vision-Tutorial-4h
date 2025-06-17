@@ -17,7 +17,7 @@ Estrutura do curso
         √ 12_blink_all.py
     2. Sensores internos.
         √ 21_vl531x_tof_1.py (rangefinder (tof))
-        inertial motion unit (imu)
+        √ inertial motion unit (imu)
         microfone?
     3. Captura de Imagem e Conectividade
         31_captura_fps.py (teste da câmara)
