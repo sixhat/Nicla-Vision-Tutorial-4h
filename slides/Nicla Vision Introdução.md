@@ -73,15 +73,15 @@ img.right {
 <!-- _paginate: false -->
 # eXperiência Hands-on Reconhecimento de Imagem com Edge Computing e IA.
 
+<img src="Nicla Vision Introdução-assets/image-10.png" class='square right' height=57>
 <img src=imgs/logo-esad.png class='square right'>
 
 > David Sousa-Rodrigues
+> António Gonçalves
 > 27 de Junho 2025
->  
 
 
 <!-- _footer: Repositório online em https://github.com/sixhat/Nicla-Vision-Tutorial-4h -->
-
 
 
 ## David Sousa-Rodrigues
