@@ -118,10 +118,9 @@ gestos e evitar congestionar o processador principal com essa tarefa.</li>
 </ul>
 <footer><a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-fragments="4" data-class="invert" data-paginate="true" data-background-color="#000;" data-footer="&lt;a href=&quot;#agenda&quot;&gt;Agenda&lt;/a&gt;—&lt;a href=&quot;#1-led-interno&quot;&gt;1. LED interno&lt;/a&gt;—&lt;a href=&quot;#2-sensores-internos&quot;&gt;2. Sensores Internos&lt;/a&gt;—&lt;a href=&quot;#3-c%C3%A2mara-e-wifi&quot;&gt;3. Câmara e Wifi&lt;/a&gt;—&lt;a href=&quot;#4-machine-learning&quot;&gt;4. Machine Learning&lt;/a&gt;" data-heading-divider="3" lang="en-GB" class="invert" data-marpit-pagination="13" style="--class:invert;--paginate:true;--background-color:#000;;--footer:&lt;a href=&quot;#agenda&quot;&gt;Agenda&lt;/a&gt;—&lt;a href=&quot;#1-led-interno&quot;&gt;1. LED interno&lt;/a&gt;—&lt;a href=&quot;#2-sensores-internos&quot;&gt;2. Sensores Internos&lt;/a&gt;—&lt;a href=&quot;#3-c%C3%A2mara-e-wifi&quot;&gt;3. Câmara e Wifi&lt;/a&gt;—&lt;a href=&quot;#4-machine-learning&quot;&gt;4. Machine Learning&lt;/a&gt;;--heading-divider:3;background-color:#000;;background-image:none;" data-marpit-pagination-total="51">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-fragments="5" data-class="invert" data-paginate="true" data-background-color="#000;" data-footer="&lt;a href=&quot;#agenda&quot;&gt;Agenda&lt;/a&gt;—&lt;a href=&quot;#1-led-interno&quot;&gt;1. LED interno&lt;/a&gt;—&lt;a href=&quot;#2-sensores-internos&quot;&gt;2. Sensores Internos&lt;/a&gt;—&lt;a href=&quot;#3-c%C3%A2mara-e-wifi&quot;&gt;3. Câmara e Wifi&lt;/a&gt;—&lt;a href=&quot;#4-machine-learning&quot;&gt;4. Machine Learning&lt;/a&gt;" data-heading-divider="3" lang="en-GB" class="invert" data-marpit-pagination="13" style="--class:invert;--paginate:true;--background-color:#000;;--footer:&lt;a href=&quot;#agenda&quot;&gt;Agenda&lt;/a&gt;—&lt;a href=&quot;#1-led-interno&quot;&gt;1. LED interno&lt;/a&gt;—&lt;a href=&quot;#2-sensores-internos&quot;&gt;2. Sensores Internos&lt;/a&gt;—&lt;a href=&quot;#3-c%C3%A2mara-e-wifi&quot;&gt;3. Câmara e Wifi&lt;/a&gt;—&lt;a href=&quot;#4-machine-learning&quot;&gt;4. Machine Learning&lt;/a&gt;;--heading-divider:3;background-color:#000;;background-image:none;" data-marpit-pagination-total="51">
 <h2 id="machine-learning">Machine Learning</h2>
-<p>Um dos atrativos principais da <strong>NV</strong> é a possibilidade de fazer Computer Vision diretamente no microcontrolador.<br />
-Há vários modelos “leves” disponíveis:</p>
+<p>A <strong>NV</strong> permite  Computer Vision e Há vários modelos “leves” disponíveis:</p>
 <ul>
 <li data-marpit-fragment="1">
 <p>YOLO (You Only Look Once)</p>
@@ -134,7 +133,10 @@ Há vários modelos “leves” disponíveis:</p>
 </li>
 <li data-marpit-fragment="4">
 <p>FOMO (Fewer Objects, More Objects)<br />
-Versão mais rápida e leve cujo objetivo é correr em µC.</p>
+Versão mais rápida e leve cujo objetivo é correr em µC edge.</p>
+</li>
+<li data-marpit-fragment="5">
+<p>Tipicamente os dispositivos edge requerem modelos pequenos quantizados para inteiros após o treino.</p>
 </li>
 </ul>
 <footer><a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a></footer>
@@ -331,7 +333,7 @@ blueLED  = pyb.LED(<span class="hljs-number">3</span>)  <span class="hljs-commen
 <li>microfone</li>
 </ul>
 <blockquote>
-<p>Os exemplos encontram-se na pasta <code>code/2-sensores_internos</code></p>
+<p>Os exemplos encontram-se na pasta <code>./code/2-sensores_internos</code></p>
 </blockquote>
 <footer><a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a></footer>
 </section>
@@ -410,7 +412,7 @@ lsm = LSM6DSOX(SPI(<span class="hljs-number">5</span>), cs=Pin(<span class="hljs
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-class="invert" data-paginate="true" data-background-color="#303;" data-footer="&lt;a href=&quot;#agenda&quot;&gt;Agenda&lt;/a&gt;—&lt;a href=&quot;#1-led-interno&quot;&gt;1. LED interno&lt;/a&gt;—&lt;a href=&quot;#2-sensores-internos&quot;&gt;2. Sensores Internos&lt;/a&gt;—&lt;a href=&quot;#3-c%C3%A2mara-e-wifi&quot;&gt;3. Câmara e Wifi&lt;/a&gt;—&lt;a href=&quot;#4-machine-learning&quot;&gt;4. Machine Learning&lt;/a&gt;" data-heading-divider="3" lang="en-GB" class="invert" data-marpit-pagination="35" style="--class:invert;--paginate:true;--background-color:#303;;--footer:&lt;a href=&quot;#agenda&quot;&gt;Agenda&lt;/a&gt;—&lt;a href=&quot;#1-led-interno&quot;&gt;1. LED interno&lt;/a&gt;—&lt;a href=&quot;#2-sensores-internos&quot;&gt;2. Sensores Internos&lt;/a&gt;—&lt;a href=&quot;#3-c%C3%A2mara-e-wifi&quot;&gt;3. Câmara e Wifi&lt;/a&gt;—&lt;a href=&quot;#4-machine-learning&quot;&gt;4. Machine Learning&lt;/a&gt;;--heading-divider:3;background-color:#303;;background-image:none;" data-marpit-pagination-total="51">
 <h2 id="exemplos-de-utiliza%C3%A7%C3%A3o-da-c%C3%A2mara-e-wifi">Exemplos de utilização da câmara e wifi</h2>
 <blockquote>
-<p>Os exemplos encontram-se na pasta <code>3-captura-imagem</code></p>
+<p>Os exemplos encontram-se na pasta <code>./code/3-captura-imagem</code></p>
 </blockquote>
 <ul>
 <li><code>31_captura_fps.py</code> - Ilustra a captura de imagens a partir da câmara da <strong>NV</strong>.</li>
@@ -612,7 +614,7 @@ eg: QQVGA, VGA, SVGA e XVGA, experimentar desligar a visualização.</p>
 <img src="Nicla Vision Introdução-assets/faces2.gif" class='right' />
 <blockquote>
 <p>Neste exemplo vamos utilizar um modelo pré treinado para a deteção de caras.<br />
-O modelo pode ser encontrado na pasta <code>4-machine-learning</code> no exemplo <code>42_tf_object_detection.py</code></p>
+O modelo pode ser encontrado na pasta <code>./code/4-machine-learning</code> no exemplo <code>42_tf_object_detection.py</code></p>
 </blockquote>
 <ol>
 <li>Copie os ficheiros <code>fomo_face_detection.tflite</code> e <code>fomo_face_detection.txt</code> para a raiz do volume da <strong>NV</strong></li>

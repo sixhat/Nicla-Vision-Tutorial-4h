@@ -194,15 +194,14 @@ Entre eles comunicam via RPC (remote procedure calls).
 
 ## Machine Learning
 
-Um dos atrativos principais da **NV** é a possibilidade de fazer Computer Vision diretamente no microcontrolador. 
-Há vários modelos “leves” disponíveis:
+A **NV** permite  Computer Vision e Há vários modelos “leves” disponíveis:
 * YOLO (You Only Look Once)
 * Mobilenet 
 
 * Ambos os modelos são bastante grandes para correrem diretamente num µC (embora haja versões _lite_).
 * FOMO (Fewer Objects, More Objects)
-Versão mais rápida e leve cujo objetivo é correr em µC.
-
+Versão mais rápida e leve cujo objetivo é correr em µC edge.
+* Tipicamente os dispositivos edge requerem modelos pequenos quantizados para inteiros após o treino.
 
 ### Exemplos de atividades:
 <!-- _class: sm invert -->
@@ -381,7 +380,7 @@ https://docs.micropython.org/en/latest/index.html
 - sensor de inércia
 - microfone
 
-> Os exemplos encontram-se na pasta `code/2-sensores_internos`
+> Os exemplos encontram-se na pasta `./code/2-sensores_internos`
 
 ## Sensor de distância
 
@@ -454,7 +453,7 @@ o código encontra-se no ficheiro `23_audio_fft.py`. Importante notar os seguint
 
 ## Exemplos de utilização da câmara e wifi
 
-> Os exemplos encontram-se na pasta `3-captura-imagem`
+> Os exemplos encontram-se na pasta `./code/3-captura-imagem`
 
 - `31_captura_fps.py` - Ilustra a captura de imagens a partir da câmara da **NV**.
 - `32_ap_mode.py` - Ilustra a utilização da **NV** como um ponto de acesso (AP) wifi. 
@@ -621,7 +620,7 @@ Pseudo-código `31_blob_detection.py`
 <img src="Nicla Vision Introdução-assets/faces2.gif" class='right'>
 
 > Neste exemplo vamos utilizar um modelo pré treinado para a deteção de caras.
-> O modelo pode ser encontrado na pasta `4-machine-learning` no exemplo `42_tf_object_detection.py`
+> O modelo pode ser encontrado na pasta `./code/4-machine-learning` no exemplo `42_tf_object_detection.py`
 
 1. Copie os ficheiros `fomo_face_detection.tflite` e `fomo_face_detection.txt` para a raiz do volume da **NV**
 2. Abra o ficheiro `42_tf_object_detection.py` no OpenMV e corra o modelo.
