@@ -1,4 +1,4 @@
-all: clean zip slide
+all: clean zip slide gith
 
 clean:
 	echo "Delete previous Zips"
@@ -11,3 +11,6 @@ zip:
 slide:
 	echo "Making Slides"
 	cd slides && make -f Makefile
+
+gith:
+	git commit -a -m "new build"
