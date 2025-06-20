@@ -642,5 +642,10 @@ A **NV** é relativamente acessível e relativamente fácil de utilizar.
 Software + Hardware nem sempre ligam bem uma vez que o Software da Edge Impulse é também utilizado para outras placas com mais capacidades levando a erros e alguns crashes.
 
 # Obrigado
-<!-- _class: tit  -->
 <!-- _backgroundColor: #132 -->
+
+A apresentação e exemplos estão online em:
+
+https://sixhat.github.io/Nicla-Vision-Tutorial-4h/
+
+https://github.com/sixhat/Nicla-Vision-Tutorial-4h

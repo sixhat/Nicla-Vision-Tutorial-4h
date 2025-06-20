@@ -1,4 +1,8 @@
-all: zip slide
+all: clean zip slide
+
+clean:
+	echo "Delete previous Zips"
+	rm -f dist/*.zip
 
 zip:
 	echo "Zipping Code"

@@ -1,4 +1,8 @@
-all: slides pdf
+all: clean slides pdf
+
+clean:
+	echo "Cleaning up old files"
+	rm -f *.pdf *.html
 
 slides:
 	echo "Preparing slides"
