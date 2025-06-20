@@ -9,7 +9,7 @@
 Estrutura do curso
 ------------------
 
-Após uma [apresentação do curso](./slides/nicla-vision-slides.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
+Após uma [apresentação do curso](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vision-slides.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
 
     1. Início (hello world).
         √ 11_blink.py 
@@ -29,6 +29,6 @@ Após uma [apresentação do curso](./slides/nicla-vision-slides.html) e da plac
         √ 41_blob_detection.py (deteção de blobs)
         √ 42_tf_object_detection.py (deteção de caras)
 
-os [slides estão também disponíveis em formato A4](./slides/nicla-vison-a4paper.pdf).
+os [slides estão também disponíveis em formato A4](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vison-a4paper.pdf).
 
-um ficheiro zip com a [pasta do código pode ser descarregada na pasta dist](./dist/nicla-vision-code.zip).
+um ficheiro zip com a [pasta do código pode ser descarregada na pasta dist](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/dist/nicla-vision-code.zip).
