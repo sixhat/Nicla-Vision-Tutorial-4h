@@ -9,7 +9,7 @@
 Estrutura do curso
 ------------------
 
-Após uma [apresentação do curso](./slides/Nicla Vision Introdução.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
+Após uma [apresentação do curso](./slides/nicla-vision-slides.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
 
     1. Início (hello world).
         √ 11_blink.py 
@@ -22,10 +22,13 @@ Após uma [apresentação do curso](./slides/Nicla Vision Introdução.html) e d
         √ 31_captura_fps.py (teste da câmara)
         √ 32_ap_mode.py (streaming video P&B QVGA em modo AP)
     4. Computer Vision e Machine Learning
-        teachable machine
+        √ teachable machine
             train image classification
             train sound 
             train pose
         √ 41_blob_detection.py (deteção de blobs)
         √ 42_tf_object_detection.py (deteção de caras)
-    
+
+os [slides estão também disponíveis em formato A4](./slides/nicla-vison-a4paper.pdf).
+
+um ficheiro zip com a [pasta do código pode ser descarregada na pasta dist](./dist/nicla-vision-code.zip).

@@ -12,5 +12,3 @@ pdf:
 	,md2pdf.sh "Nicla Vision Introdução.md"
 	mv "Nicla Vision Introdução.pdf" "nicla-vison-a4paper.pdf"
 
-
-

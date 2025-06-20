@@ -213,6 +213,7 @@ Versão mais rápida e leve cujo objetivo é correr em µC edge.
 - Tracker de objeto baseado em Cor
 - LED / Câmara ativada baseada em som?
 - Captura de vídeo baseado no IMU (por exemplo num acidente?)
+- Sistemas de segurança
 
 
 # Parte prática
