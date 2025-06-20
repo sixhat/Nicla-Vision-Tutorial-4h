@@ -16,8 +16,6 @@ venv/
 .coverage
 # Ignore build directories
 build/
-# Ignore distribution directories
-dist/
 # Ignore egg-info directories
 *.egg-info/
 # Ignore pipenv files
