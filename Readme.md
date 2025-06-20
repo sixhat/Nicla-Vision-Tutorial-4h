@@ -29,6 +29,6 @@ Após uma [apresentação do curso](https://sixhat.github.io/Nicla-Vision-Tutori
         √ 41_blob_detection.py (deteção de blobs)
         √ 42_tf_object_detection.py (deteção de caras)
 
-os [slides estão também disponíveis em formato A4](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vison-a4paper.pdf).
+os [slides estão também disponíveis em formato A4](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vision-a4paper.pdf).
 
 um ficheiro zip com a [pasta do código pode ser descarregada na pasta dist](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/dist/nicla-vision-code.zip).
