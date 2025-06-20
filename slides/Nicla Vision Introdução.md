@@ -20,6 +20,7 @@ section {
    align-content: baseline;
 }
 footer {
+   border-top: 1px solid;
    text-align: center;
    width: 100%;
    font-size: 14px;
@@ -125,11 +126,13 @@ img.right {
 ![Nicla Vision](imgs/nv-fam.png)
 
 
-## Nicla Vision
+## Nicla Vision (frente)
 
 ![fit](<Nicla Vision Introdução-assets/image-6.png>)
 
+## Nicla Vision (costas)
 
+![fit](<Nicla Vision Introdução-assets/image-13.png>)
 
 ## Processador
 
@@ -140,7 +143,7 @@ Entre eles comunicam via RPC (remote procedure calls).
 
 
 
-## Inputs / Sensors
+<!-- ## Inputs / Sensors
 
 - Câmara
 - Time-of-flight long distance ranging sensor (IR - luz 940nm, ±4m
@@ -149,7 +152,7 @@ Entre eles comunicam via RPC (remote procedure calls).
 - IMU de 6-eixos (inertial measurment unit) (3 eixos acelerómetro + 3
   eixos giroscópio), tem capacidades de ML para p.e. Fazer deteção de
   gestos e evitar congestionar o processador principal com essa tarefa.
-
+ -->
 
 
 ## Comunicação
@@ -170,14 +173,14 @@ Entre eles comunicam via RPC (remote procedure calls).
 
 
 ### Pinout (traseira)
-![](imgs/nv-3.png)
+![bg fit](imgs/nv-3.png)
 
 
 
 ### Alimentação 
 <!-- _class: invert two -->
 
-![](imgs/nv-4.png)
+![](imgs/nv-4.png) 
 
 ![height:450px](imgs/nv-2.png)
 
@@ -194,47 +197,27 @@ Entre eles comunicam via RPC (remote procedure calls).
 
 ## Machine Learning
 
-A **NV** permite  Computer Vision e Há vários modelos “leves” disponíveis:
+- A **NV** permite Computer Vision.
+- Há diversos modelos “leves” disponíveis:
+
 * YOLO (You Only Look Once)
 * Mobilenet 
-
-* Ambos os modelos são bastante grandes para correrem diretamente num µC (embora haja versões _lite_).
+> Ambos os modelos são bastante grandes para correrem diretamente num µC (embora haja versões _lite_).
 * FOMO (Fewer Objects, More Objects)
 Versão mais rápida e leve cujo objetivo é correr em µC edge.
-* Tipicamente os dispositivos edge requerem modelos pequenos quantizados para inteiros após o treino.
-
-### Exemplos de atividades:
-<!-- _class: sm invert -->
-
-- Blink do LED
-   - 1 Led
-   - LED RGB
-- Explorando exemplos com os sensores:
-   - IMU (acelerómetro e giroscópio)
-   - Microfone
-   - ToF (sensor de distância)
-- Capturar Imagem e mostrar
-   - Gravar imagens para a memória
-   - Enviar imagem via RTSP (necessita uma WiFi configurável para podermos aceder, poderá funcionar com a Nicla como AP?!)
-- AI e Edge Computing
- -  Correr um modelo pré-treinado (FOMO, deteção de faces, classificação de objetos)
+> Tipicamente os dispositivos edge requerem modelos pequenos quantizados para inteiros após o treino.
 
 
-
-
-## Sugestões de atividades
+## Exemplos de aplicações para Nicla Vision
 - Deteção de movimento e captura de imagem
 - Tracker de objeto baseado em Cor
 - LED / Câmara ativada baseada em som?
 - Captura de vídeo baseado no IMU (por exemplo num acidente?)
 
 
-
-
 # Parte prática
 <!-- _class: tit -->
-<!-- footer: "" -->
-<!-- backgroundColor: #333 -->
+<!-- backgroundColor: #224 -->
 
 
 # Pré-requisitos
@@ -265,13 +248,11 @@ Versão mais rápida e leve cujo objetivo é correr em µC edge.
             train sound 
             train pose
         √ 41_blob_detection.py
-        42_tf_object_detection.py (utiliza um modelo pré treinado para detetar caras)
+        √ 42_tf_object_detection.py (utiliza um modelo pré treinado para detetar caras)
 
 
 
 # Setup
-<!-- footer: <a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a> -->
-
 
 - Antes de conectar pela primeira vez a **NV** deve colocar a antena.
 
@@ -446,6 +427,11 @@ o código encontra-se no ficheiro `23_audio_fft.py`. Importante notar os seguint
 * `audio.start_streaming` e `audio.stop_streaming` para começar e parar a captura
 * utiliza a biblioteca de cálculo numérico `numpy` em vez de vetores nativos python
 
+# Intervalo
+<!-- _class: tit -->
+<!-- _footer: "" -->
+<!-- backgroundColor: #363 -->
+
 # 3. Câmara e Wifi
 <!-- _class: tit -->
 <!-- backgroundColor: #303; -->
@@ -496,6 +482,25 @@ while True:
 <!-- _class: tit -->
 <!-- backgroundColor: #004; -->
 
+## Caveat, disclaimer e explicações (ou desculpas)
+<!-- _backgroundColor: #444; -->
+
+A parceria entre a [Arduino](https://www.arduino.cc/) e a [Edge Impulse](https://studio.edgeimpulse.com) faz com que o treino de datasets para a Nicla Vision seja executado normalmente no website do Edge Impulse. No entanto, o treino de modelos no Edge Impulse é relativamente complicado para uma sessão tão curta. Para ilustrar os conceitos vamos utilizar o Teachable Machine da Google.
+
+![alt text](<Nicla Vision Introdução-assets/image-14.png>)
+
+## Modelos Computer Vision
+<!-- _backgroundColor: #111111 -->
+![alt text](<Nicla Vision Introdução-assets/image-15.png>)
+
+## Plano 
+
+      Teachable Machine ——— teachablemachine.withgoogle.com
+         - 1 Exemplo de deteção de imagens (objetos)
+         - 1 Exemplo de reconhecimento de som
+         - 1 exemplo de reconhecimento de poses
+      Deteção de Blobs
+      Aplicação de um modelo pré-treinado para deteção de caras
 
 ## Teachable Machine (TM)
 
@@ -635,3 +640,6 @@ A **NV** é relativamente acessível e relativamente fácil de utilizar.
 
 Software + Hardware nem sempre ligam bem uma vez que o Software da Edge Impulse é também utilizado para outras placas com mais capacidades levando a erros e alguns crashes.
 
+# Obrigado
+<!-- _class: tit  -->
+<!-- _backgroundColor: #132 -->

@@ -1,0 +1,513 @@
+<style> * {
+margin:0 auto;
+padding:0;
+max-width: 72ch;
+}
+body {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+h1, h2, h3 {
+  border-top: 1px solid #000;
+  width: 100%;
+  margin-top: 1em;
+}
+
+</style>
+<h1>eXperiência Hands-on Reconhecimento de Imagem com Edge Computing e IA.</h1>
+<img src="Nicla Vision Introdução-assets/image-10.png" class='square right' height=57>
+<img src=imgs/logo-esad.png class='square right'>
+<blockquote>
+<p>David Sousa-Rodrigues
+António Gonçalves
+27 de Junho 2025</p>
+</blockquote>
+<!-- _footer: Repositório online em https://github.com/sixhat/Nicla-Vision-Tutorial-4h -->
+<h2>David Sousa-Rodrigues</h2>
+<!-- _class: two invert -->
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/dsr.png" alt="height:450"></p>
+<ul>
+<li>Professor de Computação Física, Algoritmia, Design Computacional e
+Inteligência Artificial na Escola Superior de Artes e Design, Caldas
+da Rainha.</li>
+<li>Membro do centro de complexidade e design da Open University, UK.</li>
+</ul>
+<h1>Agenda</h1>
+<!-- footer: <a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a> -->
+<blockquote>
+<p>Apresentar as potencialidades do microcontrolador <a href="https://www.arduino.cc/pro/hardware-nicla-family/">Arduino Nicla Vision (NV)</a> numa perspetiva Hands-on.</p>
+</blockquote>
+<ol>
+<li>Apresentação da Placa e sua família</li>
+<li>Parte Prática<ol>
+<li>Introdução e testes de setup com LED RGB interno</li>
+<li>Os diversos sensores da placa</li>
+<li>A câmara e a conetividade Wifi / Bluetooth</li>
+<li>Computer Vision e Machine Learning</li>
+</ol>
+</li>
+</ol>
+<h2>Nicla (família)</h2>
+<p><img src="imgs/nv-fam.png" alt="Nicla Vision"></p>
+<h2>Nicla Vision (frente)</h2>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-6.png" alt="fit"></p>
+<h2>Nicla Vision (costas)</h2>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-13.png" alt="fit"></p>
+<h2>Processador</h2>
+<img src='Nicla Vision Introdução-assets/image-9.png' width=100 class="left">
+<p>Dual-core STM32H747, que inclui um <strong>ARM Cortex M7 a 480MHz</strong> e um <strong>ARM Cortex M4 a 240MHz</strong>.
+Entre eles comunicam via RPC (remote procedure calls).</p>
+<!-- ## Inputs / Sensors
+
+- Câmara
+- Time-of-flight long distance ranging sensor (IR - luz 940nm, ±4m
+  distância)
+- Microfone omnidireccional
+- IMU de 6-eixos (inertial measurment unit) (3 eixos acelerómetro + 3
+  eixos giroscópio), tem capacidades de ML para p.e. Fazer deteção de
+  gestos e evitar congestionar o processador principal com essa tarefa.
+ -->
+<h2>Comunicação</h2>
+<ul>
+<li>USB</li>
+<li>Wifi + Bluetooth
+- Wifi b/g/n pode funcionar como Ponto de Acesso (AP), Cliente (STA) ou ambos simultaneamente. Velocidade máxima 65Mbps
+- Bluetooth suporta BT clássico e BLE. Antena é partilhada tanto por Wifi como BT.</li>
+<li>UART</li>
+<li>I2C</li>
+<li>SPI</li>
+</ul>
+<h3>Pinout (frente)</h3>
+<p><img src="imgs/nv-1.png" alt=""></p>
+<h3>Pinout (traseira)</h3>
+<p><img src="imgs/nv-3.png" alt="bg fit"></p>
+<h3>Alimentação</h3>
+<!-- _class: invert two -->
+<p><img src="imgs/nv-4.png" alt=""></p>
+<p><img src="imgs/nv-2.png" alt="height:450px"></p>
+<h2>Câmara</h2>
+<ul>
+<li>2 Megapixel CMOS</li>
+<li>Ângulo do visão: 80º</li>
+<li>Distância focal: 2.2mm</li>
+</ul>
+<h2>Machine Learning</h2>
+<ul>
+<li>A <strong>NV</strong> permite Computer Vision.</li>
+<li>Há diversos modelos “leves” disponíveis:</li>
+</ul>
+<ul>
+<li><p>YOLO (You Only Look Once)</p>
+</li>
+<li><p>Mobilenet</p>
+</li>
+<li><p>Ambos os modelos são bastante grandes para correrem diretamente num µC (embora haja versões <em>lite</em>).</p>
+</li>
+<li><p>FOMO (Fewer Objects, More Objects)
+Versão mais rápida e leve cujo objetivo é correr em µC edge.</p>
+</li>
+<li><p>Tipicamente os dispositivos edge requerem modelos pequenos quantizados para inteiros após o treino.</p>
+</li>
+</ul>
+<h3>Exemplos de atividades:</h3>
+<!-- _class: sm invert -->
+<ul>
+<li>Blink do LED<ul>
+<li>1 Led</li>
+<li>LED RGB</li>
+</ul>
+</li>
+<li>Explorando exemplos com os sensores:<ul>
+<li>IMU (acelerómetro e giroscópio)</li>
+<li>Microfone</li>
+<li>ToF (sensor de distância)</li>
+</ul>
+</li>
+<li>Capturar Imagem e mostrar<ul>
+<li>Gravar imagens para a memória</li>
+<li>Enviar imagem via RTSP (necessita uma WiFi configurável para podermos aceder, poderá funcionar com a Nicla como AP?!)</li>
+</ul>
+</li>
+<li>AI e Edge Computing</li>
+<li>Correr um modelo pré-treinado (FOMO, deteção de faces, classificação de objetos)</li>
+</ul>
+<h2>Sugestões de atividades</h2>
+<ul>
+<li>Deteção de movimento e captura de imagem</li>
+<li>Tracker de objeto baseado em Cor</li>
+<li>LED / Câmara ativada baseada em som?</li>
+<li>Captura de vídeo baseado no IMU (por exemplo num acidente?)</li>
+</ul>
+<h1>Parte prática</h1>
+<!-- _class: tit -->
+<!-- backgroundColor: #224 -->
+<h1>Pré-requisitos</h1>
+<ul>
+<li>Computador portátil com wifi, câmara e ligação à internet</li>
+<li>Uma placa Arduino Nicla Vision</li>
+<li>Cabo USB Micro-B - Type A (pode necessitar adaptador USB-C-&gt;Type A)</li>
+</ul>
+<h3>Atividades</h3>
+<pre><code>0. setup, se necessário.
+1. Início (Pisca Pisca dos LEDs).
+    √ 11_blink.py 
+    √ 12_blink_all.py
+2. Sensores internos.
+    √ 21_vl531x_tof_1.py (rangefinder (tof))
+    √ inertial motion unit (imu)
+    √ microfone?
+3. Captura de Imagem e Conectividade
+    √ 31_captura_fps.py (captura simples da câmara)
+    √ 32_ap_mode.py (streaming video P&amp;B QVGA em modo AP)
+4. Computer Vision e Machine Learning
+    √ teachable machine
+        train image classification
+        train sound 
+        train pose
+    √ 41_blob_detection.py
+    √ 42_tf_object_detection.py (utiliza um modelo pré treinado para detetar caras)
+</code></pre>
+<h1>Setup</h1>
+<ul>
+<li><p>Antes de conectar pela primeira vez a <strong>NV</strong> deve colocar a antena.</p>
+</li>
+<li><p>Verifique se tem o software <a href="https://openmv.io/pages/download">OpenMV IDE</a> instalado.</p>
+</li>
+<li><p>Ao conectar a NV ao computador o OpenMV IDE irá verificar se é necessário atualizar o firmware da mesma.</p>
+</li>
+</ul>
+<hr>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-7.png" alt="bg fit"></p>
+<h2>Atualizar firmware</h2>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-5.png" alt="height:300"></p>
+<blockquote>
+<p>Pode-se forçar a tentativa de atualização (mesmo que já tenha o último firmware) colocando a placa em modo bootloader fazendo um duplo clique no botão reset.
+A placa fará fade-in-out do LED verde indicando estar em modo bootloader.</p>
+</blockquote>
+<h1>1. LED interno</h1>
+<!-- _class: tit -->
+<!-- backgroundColor: #300; -->
+<!-- footer: <a href="#agenda">Agenda</a>—<a href="#1-led-interno">1. LED interno</a>—<a href="#2-sensores-internos">2. Sensores Internos</a>—<a href="#3-c%C3%A2mara-e-wifi">3. Câmara e Wifi</a>—<a href="#4-machine-learning">4. Machine Learning</a> -->
+<hr>
+<ul>
+<li><p>Ao comprar uma placa o primeiro objetivo é ver se está a funcionar.</p>
+</li>
+<li><p>Vamos colocar o LED RGB interno a funcionar de duas formas diferentes.</p>
+</li>
+</ul>
+<blockquote>
+<p>O código dos exercícios encontra-se na pasta <code>./code/1-inicio</code></p>
+</blockquote>
+<ul>
+<li>O ficheiro <code>11_blink.py</code> contém instruções para acender o LED azul</li>
+<li>O ficheiro <code>12_blink_all.py</code> contém instruções para acender os 3 LEDs em sequência (Red, Green, Blue).</li>
+</ul>
+<blockquote>
+<p>Para experimentar cada um dos exemplos abra o ficheiro a partir do OpenMV IDE, conecte a Nicla Vision e depois corra o código.</p>
+</blockquote>
+<h3>Exemplo <code>11_blink.py</code></h3>
+<pre><code class="language-python">import time
+from machine import LED
+
+TIME_TO_WAIT = 500
+led = LED(&quot;LED_BLUE&quot;)  # Also available: LED_RED, LED_GREEN
+
+while True:
+    led.on()
+    time.sleep_ms(TIME_TO_WAIT)
+    led.off()
+    time.sleep_ms(TIME_TO_WAIT)
+</code></pre>
+<h3>Exemplo <code>12_blink_all.py</code></h3>
+<!-- _class: invert sm -->
+<pre><code class="language-python">import pyb
+
+TIME_TO_WAIT = 500
+redLED   = pyb.LED(1)  # built-in red LED
+greenLED = pyb.LED(2)  # built-in green LED
+blueLED  = pyb.LED(3)  # built-in blue LED
+
+while True:
+    redLED.on()
+    pyb.delay(TIME_TO_WAIT)
+    redLED.off()
+    pyb.delay(TIME_TO_WAIT)
+
+    greenLED.on()
+    pyb.delay(TIME_TO_WAIT)
+    greenLED.off()
+    pyb.delay(TIME_TO_WAIT)
+
+    blueLED.on()
+    pyb.delay(TIME_TO_WAIT)
+    blueLED.off()
+    pyb.delay(TIME_TO_WAIT)
+</code></pre>
+<h3>Início (blink)</h3>
+<p>Nos dois exemplos apresentados observamos:</p>
+<ul>
+<li>Utilizamos <strong>python</strong> (Micropython em vez de C++, tradicionalmente utilizado com Arduinos)</li>
+<li>É possível utilizar C++ mas obriga a mudar o firmware da placa.</li>
+<li>Vemos duas formas diferentes de aceder ao hardware (LED), utilizando a biblioteca <code>pyb</code> e a biblioteca <code>machine</code></li>
+<li>A <code>pyb</code> é específica para a placa <strong>pyboard</strong>, vendida pelo <strong>micropython</strong> mas compatível com a Nicla Vision.</li>
+<li>A <code>machine</code> é genérica para acomodar diversas boards.
+—
+https://docs.micropython.org/en/latest/index.html</li>
+</ul>
+<h1>2. Sensores Internos</h1>
+<!-- backgroundColor: #030; -->
+<!-- _class: tit  -->
+<h2>Vamos explorar:</h2>
+<ul>
+<li>sensor de distância</li>
+<li>sensor de inércia</li>
+<li>microfone</li>
+</ul>
+<blockquote>
+<p>Os exemplos encontram-se na pasta <code>./code/2-sensores_internos</code></p>
+</blockquote>
+<h2>Sensor de distância</h2>
+<p>Código em <code>21_vl53l1x_tof_1.py</code></p>
+<img class='right' src="Nicla Vision Introdução-assets/image-8.png">
+<ul>
+<li>Utiliza o sensor VL53L1X (time of flight)</li>
+<li>Emissor laser, 980nm</li>
+<li>Array de recetores</li>
+<li>Até 4m de distância</li>
+</ul>
+<h2>Sensor de distância</h2>
+<pre><code class="language-python">from machine import I2C
+from vl53l1x import VL53L1X
+import time
+
+tof = VL53L1X(I2C(2))
+
+while True:
+    print(f&quot;Distance: {tof.read()}mm&quot;)
+    time.sleep_ms(50)
+</code></pre>
+<ul>
+<li><strong>Consegue estimar o ângulo de cobertura (FoV) do sensor?</strong></li>
+<li>Segundo o datasheet é ~27º</li>
+</ul>
+<h2>Sensor de Inércia</h2>
+<ul>
+<li><a href="https://www.st.com/en/mems-and-sensors/lsm6dsox.html#documentation">LSM6DSOX</a> tem um acelerómetro e um giroscópio de 3 eixos.</li>
+<li>Interface SPI (Serial Parallel Interface)</li>
+<li>Carregue e corra o exemplo <code>22_lsm6dsox_basic.py</code></li>
+<li>Experimente mover a <strong>NV</strong> e observe os valor apresentados no terminal do OpenMV.</li>
+</ul>
+<h2>Sensor de Inércia (código)</h2>
+<pre><code class="language-python">import time
+from lsm6dsox import LSM6DSOX
+from machine import Pin
+from machine import SPI
+
+lsm = LSM6DSOX(SPI(5), cs=Pin(&quot;PF6&quot;, Pin.OUT_PP, Pin.PULL_UP))
+
+while True:
+    print(&quot;Accelerometer: x:{:&gt;8.3f} y:{:&gt;8.3f} z:{:&gt;8.3f}&quot;.format(*lsm.accel()))
+    print(&quot;Gyroscope:     x:{:&gt;8.3f} y:{:&gt;8.3f} z:{:&gt;8.3f}&quot;.format(*lsm.gyro()))
+    print(&quot;&quot;)
+    time.sleep_ms(100)
+</code></pre>
+<h2>Sensor Microfone</h2>
+<img class="right" src="Nicla Vision Introdução-assets/fft_out.gif">
+<p>A <strong>NV</strong> está equipada com um microfone omni-direcional</p>
+<p>o código encontra-se no ficheiro <code>23_audio_fft.py</code>. Importante notar os seguintes aspetos:</p>
+<ul>
+<li><code>audio.start_streaming</code> e <code>audio.stop_streaming</code> para começar e parar a captura</li>
+<li>utiliza a biblioteca de cálculo numérico <code>numpy</code> em vez de vetores nativos python</li>
+</ul>
+<h1>Intervalo</h1>
+<!-- _class: tit -->
+<!-- _footer: "" -->
+<!-- backgroundColor: #363 -->
+<h1>3. Câmara e Wifi</h1>
+<!-- _class: tit -->
+<!-- backgroundColor: #303; -->
+<h2>Exemplos de utilização da câmara e wifi</h2>
+<blockquote>
+<p>Os exemplos encontram-se na pasta <code>./code/3-captura-imagem</code></p>
+</blockquote>
+<ul>
+<li><code>31_captura_fps.py</code> - Ilustra a captura de imagens a partir da câmara da <strong>NV</strong>.</li>
+<li><code>32_ap_mode.py</code> - Ilustra a utilização da <strong>NV</strong> como um ponto de acesso (AP) wifi.</li>
+</ul>
+<h2>Captura de imagem</h2>
+<pre><code class="language-python">import sensor
+import time
+
+sensor.reset()  
+sensor.set_pixformat(sensor.RGB565) 
+sensor.set_framesize(sensor.QVGA)  #Outros formatos são suportados
+sensor.skip_frames(time=2000)  
+clock = time.clock() 
+
+while True:
+    clock.tick()  
+    img = sensor.snapshot()  
+    print(clock.fps()) 
+</code></pre>
+<blockquote>
+<p>Experimentar outros <code>framesize</code> para perceber as diferenças de performance
+eg: QQVGA, VGA, SVGA e XVGA, experimentar desligar a visualização.</p>
+</blockquote>
+<h2>Acesso remoto à câmara (Wifi)</h2>
+<img class="right" width=320 src="Nicla Vision Introdução-assets/out2.gif">
+<blockquote>
+<p>Vamos tornar a <strong>NV</strong> num AP ao qual podemos aceder com o telemóvel.</p>
+</blockquote>
+<ol>
+<li>abram o ficheiro <code>32_ap_mode.py</code></li>
+<li>editem a <em>linha 16</em> para definir um SSID (temos 5 <strong>NV</strong> pelo que os SSIDs devem ser diferentes)</li>
+<li>Corram o código na Nicla Vision</li>
+<li>Acedam a este ponto de acesso com o telemóvel juntando-se à rede recentemente criada e abram o browser no endereço <strong>http://IP_DA_NV:8080</strong></li>
+</ol>
+<blockquote>
+<p>Nota, o código permite o estabelecimento da ligação de um cliente de cada vez apenas.</p>
+</blockquote>
+<h1>4. Machine Learning</h1>
+<!-- _class: tit -->
+<!-- backgroundColor: #004; -->
+<h2>Caveat, disclaimer e explicações (ou desculpas)</h2>
+<!-- _backgroundColor: #444; -->
+<p>A parceria entre a <a href="https://www.arduino.cc/">Arduino</a> e a <a href="https://studio.edgeimpulse.com">Edge Impulse</a> faz com que o treino de datasets para a Nicla Vision seja executado normalmente no website do Edge Impulse. No entanto, o treino de modelos no Edge Impulse é relativamente complicado para uma sessão tão curta. Para ilustrar os conceitos vamos utilizar o Teachable Machine da Google.</p>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-14.png" alt="alt text"></p>
+<h2>Modelos Computer Vision</h2>
+<!-- _backgroundColor: #111111 -->
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-15.png" alt="alt text"></p>
+<h2>Plano</h2>
+<pre><code>  Teachable Machine ——— teachablemachine.withgoogle.com
+     - 1 Exemplo de deteção de imagens (objetos)
+     - 1 Exemplo de reconhecimento de som
+     - 1 exemplo de reconhecimento de poses
+  Deteção de Blobs
+  Aplicação de um modelo pré-treinado para deteção de caras
+</code></pre>
+<h2>Teachable Machine (TM)</h2>
+<img src="Nicla Vision Introdução-assets/prediction.gif" class="right">
+<p>Teachable Machine é uma ferramenta online gratuita do Google que permite criar modelos de Machine Learning de forma simples e sem precisar programar.</p>
+<p>Com ele, podemos treinar modelos para:</p>
+<pre><code>  - Reconhecer imagens (ex: objetos, pessoas)
+  - Reconhecer sons (ex: palmas, fala)
+  - Reconhecer poses corporais (ex: gestos, movimentos)
+</code></pre>
+<p>Aceder em: https://teachablemachine.withgoogle.com/</p>
+<h2>TM - Reconhecimento de imagens</h2>
+<ol>
+<li>Escolher Get Started</li>
+<li>Criar um Projeto Novo do tipo &quot;Image Project&quot; e &quot;Standard image model&quot;</li>
+<li>Definir o n. de classes para o n. de categorias pretendidas (não esquecer de incluir uma categoria vazia)</li>
+<li>Utilizar a câmara do portátil para capturar exemplos dos objetos</li>
+<li>Treinar o modelo clicando em &quot;Train Model&quot;.</li>
+<li>Testar o modelo</li>
+</ol>
+<blockquote>
+<p>As imagens capturadas não são enviadas para o Google. Ficam apenas no browser durante a execução do treino.</p>
+</blockquote>
+<h2>TM - Reconhecimento de voz</h2>
+<ol>
+<li>Criar um projeto novo do tipo Audio Project.</li>
+<li>Neste caso é necessário extrair amostras do ruído de fundo. Depois de gravar cada uma das amostras é necessário clicar em &quot;Extract Sample&quot;</li>
+<li>Também para os comandos pretendidos é necessário gravar pelo menos 8 amostras e fazer &quot;Extract Sample&quot;</li>
+<li>Treinar o modelo</li>
+<li>Testar o modelo</li>
+</ol>
+<h2>TM - Deteção de Pose</h2>
+<img src="Nicla Vision Introdução-assets/pose.gif" class="right" width=450>
+<ol>
+<li>Crie um projeto de deteção de Poses para classificar diferentes poses.</li>
+<li>Por exemplo uma pose pode indicar com um braço no ar pode indicar &quot;Pedir ajuda&quot; e outra com os dois braços pode indicar &quot;Parar tudo&quot;</li>
+</ol>
+<h2>TM - Modelos para microcontroladores</h2>
+<ul>
+<li><p>O Teachable Machine permite exportar estes modelos. No entanto, os modelos exportados não são compatíveis com a <strong>Nicla Vision</strong>, sendo apenas suportados pelo Arduino Nano 33 BLE Sense (EOL)</p>
+</li>
+<li><p>Os modelos <strong>tensorflow lite</strong> tem que ser <strong>quantitizados</strong> (pesos da rede neuronal tem que ser int8 em vez de float32), mas tal exige ter um conjunto de amostras representativas do modelo para obter os intervalos de dados.</p>
+</li>
+<li><p>Em alternativa pode-se treinar modelos no Edge Impulse (https://edgeimpulse.com/) que são compatíveis com a Nicla Vision (embora os projetos não sejam tão intuitivos de executar como no Teachable Machine)</p>
+</li>
+</ul>
+<h2>Deteção de Blobs.</h2>
+<blockquote>
+<p>A deteção de blobs procura definir regiões de uma imagem que possam ser consideradas uniformes (até uma determinada tolerância)</p>
+</blockquote>
+<ul>
+<li>Há diversos critérios de uniformidade:<ul>
+<li>Cor</li>
+<li>Circularidade</li>
+<li>Excentricidade</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+<h2>Instruções</h2>
+<!-- _class: invert two -->
+<blockquote>
+<p>Blobs baseados na similaridade de cor</p>
+</blockquote>
+<ul>
+<li><p>Abra o exemplo <code>41_blob_detection.py</code> no editor OpenMV IDE.</p>
+</li>
+<li><p>O Detetor de blobs funciona em espaço de cor La*b*—<em>Luminosidade, a*, e b*, sendo que o a* é b* representam a perceção de cor vermelho–verde e azul–amarelo</em></p>
+</li>
+</ul>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image.png" alt=""></p>
+<h3>Deteção de Blobs</h3>
+<p>Pseudo-código <code>31_blob_detection.py</code></p>
+<pre><code class="language-txt">   importa bibliotecas
+   define variáveis de captura da Nicla Vision
+   define mínimos e máximos para os diversos blobs  
+   define um conjunto de cores para os representar
+   inicializa o relógio
+   loop continuo:
+      captura imagem
+      encontra blobs
+      para cada blob
+         desenha um retângulo e uma cruz no centro de cada blob
+      um pequeno delay 
+      imprime o n.º de frames por segundo
+</code></pre>
+<h3>Deteção de Blobs - atividade</h3>
+<!-- _class: sm invert two -->
+<ul>
+<li>Corra o modelo <code>41_blob_detection.py</code></li>
+<li>Defina o espaço de cores como <strong>LAB Color Space</strong> a partir do drop-down.</li>
+<li>Mostre à câmara diversos objetos e na imagem capturada desenhe um retângulo de forma a circunscrever o objeto.</li>
+<li>No histograma <strong>LAB</strong> tome nota dos valores <em>min</em> e <em>max</em> para cada componente e substitua-os na variável <code>blob1</code>.</li>
+<li>Faça o mesmo com outro objeto, agora substituindo os valores da variável <code>blob2</code>.</li>
+</ul>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-3.png" alt=""></p>
+<h3>Deteção de Blobs - Threshold Editor</h3>
+<!-- _class: two invert sm -->
+<ul>
+<li>Em alternativa aos dois últimos pontos, utilize a ferramenta <code>Tools &gt; Machine Vision &gt; Threshold Editor</code> para definir os mínimos e máximos de uma forma visual.</li>
+<li>Corra o modelo novamente e agora mostre os objetos à câmara. Verifique que os blobs são detetados.</li>
+</ul>
+<p><img src="Nicla%20Vision%20Introdu%C3%A7%C3%A3o-assets/image-4.png" alt=""></p>
+<h3>Explore o código e responda (5 min):</h3>
+<ul>
+<li>Qual o efeito de alterar o tamanho mínimo de deteção para áreas maiores e menores?</li>
+<li>Qual o efeito de não fazer merge dos blobs que se sobreponham?</li>
+<li>Qual o n. de frames por segundo máximo que obtém? (comentem a linha com o delay)</li>
+</ul>
+<h2>Deteção de Caras, modelo pré treinado.</h2>
+<img src="Nicla Vision Introdução-assets/faces2.gif" class='right'>
+<blockquote>
+<p>Neste exemplo vamos utilizar um modelo pré treinado para a deteção de caras.
+O modelo pode ser encontrado na pasta <code>./code/4-machine-learning</code> no exemplo <code>42_tf_object_detection.py</code></p>
+</blockquote>
+<ol>
+<li>Copie os ficheiros <code>fomo_face_detection.tflite</code> e <code>fomo_face_detection.txt</code> para a raiz do volume da <strong>NV</strong></li>
+<li>Abra o ficheiro <code>42_tf_object_detection.py</code> no OpenMV e corra o modelo.</li>
+</ol>
+<h1>Conclusões</h1>
+<!-- backgroundColor: #333300 -->
+<p>A computação Edge está cada vez mais acessível.</p>
+<p>A <strong>NV</strong> é relativamente acessível e relativamente fácil de utilizar.</p>
+<p>Software + Hardware nem sempre ligam bem uma vez que o Software da Edge Impulse é também utilizado para outras placas com mais capacidades levando a erros e alguns crashes.</p>
+<h1>Obrigado</h1>
+<!-- _class: tit  -->
+<!-- _backgroundColor: #132 -->
