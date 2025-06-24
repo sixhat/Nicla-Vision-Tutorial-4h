@@ -86,7 +86,7 @@ img.right {
 # eXperiência Hands-on Reconhecimento de Imagem com Edge Computing e IA.
 
 <img src="Nicla Vision Introdução-assets/image-10.png" class='square right' height=57>
-<img src=imgs/logo-esad.png class='square right'>
+<img src=qimgs/logo-esad.png class='square right'>
 
 > David Sousa-Rodrigues
 > António Gonçalves
@@ -549,7 +549,7 @@ Aceder em: https://teachablemachine.withgoogle.com/
 
 - O Teachable Machine permite exportar estes modelos. No entanto, os modelos exportados não são compatíveis com a **Nicla Vision**, sendo apenas suportados pelo Arduino Nano 33 BLE Sense (EOL) 
 
-- Os modelos **tensorflow lite** tem que ser **quantitizados** (pesos da rede neuronal tem que ser int8 em vez de float32), mas tal exige ter um conjunto de amostras representativas do modelo para obter os intervalos de dados.
+- Os modelos **tensorflow lite** tem que ser **quantizados** (pesos da rede neuronal tem que ser int8 em vez de float32), mas tal exige ter um conjunto de amostras representativas do modelo para obter os intervalos de dados.
 
 - Em alternativa pode-se treinar modelos no Edge Impulse (https://edgeimpulse.com/) que são compatíveis com a Nicla Vision (embora os projetos não sejam tão intuitivos de executar como no Teachable Machine)       
 
