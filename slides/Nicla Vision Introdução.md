@@ -86,7 +86,7 @@ img.right {
 # eXperiência Hands-on Reconhecimento de Imagem com Edge Computing e IA.
 
 <img src="Nicla Vision Introdução-assets/image-10.png" class='square right' height=57>
-<img src=qimgs/logo-esad.png class='square right'>
+<img src=imgs/logo-esad.png class='square right'>
 
 > David Sousa-Rodrigues
 > António Gonçalves
