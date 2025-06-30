@@ -32,3 +32,5 @@ Após uma [apresentação do curso](https://sixhat.github.io/Nicla-Vision-Tutori
 os [slides estão também disponíveis em formato A4](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vision-a4paper.pdf) e [versão PDF](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vision-slides.pdf)
 
 um ficheiro zip com a [pasta do código pode ser descarregada na pasta dist](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/dist/nicla-vision-code.zip).
+
+O Cartaz do evento pode ser descarregado [aqui](Cartaz_A4.pdf).
