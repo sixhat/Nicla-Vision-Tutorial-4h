@@ -9,7 +9,7 @@
 Estrutura do curso
 ------------------
 
-Após uma [apresentação do curso](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vision-slides.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
+Após uma [apresentação do curso (slides)](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/slides/nicla-vision-slides.html) e da placa o curso está dividido em quatro blocos práticos com os seguintes exercícios:
 
     1. Início (hello world).
         √ 11_blink.py 
@@ -34,3 +34,5 @@ os [slides estão também disponíveis em formato A4](https://sixhat.github.io/N
 um ficheiro zip com a [pasta do código pode ser descarregada na pasta dist](https://sixhat.github.io/Nicla-Vision-Tutorial-4h/dist/nicla-vision-code.zip).
 
 O Cartaz do evento pode ser descarregado [aqui](Cartaz_A4.pdf).
+
+O Repositório está no [GitHub](https://github.com/sixhat/Nicla-Vision-Tutorial-4h/)
